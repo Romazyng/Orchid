@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import { Marcellus_SC } from 'next/font/google';
 
@@ -9,7 +11,7 @@ const marcellus = Marcellus_SC({
 
 export default function Navbar() {
     return (
-        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 w-[325px] h-[55px] bg-[#454040] text-white rounded-[36px]">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 w-[325px] h-[55px] bg-[#454040] text-white rounded-[36px] z-10">
   <div className="container mx-auto flex justify-between items-center">
     <div className="bg-[#3A3737] rounded-[36px] w-[106px] h-[55px] flex items-center justify-center">
       <Link href="/" className={`${marcellus.className} antialiased text-2xl`}>
