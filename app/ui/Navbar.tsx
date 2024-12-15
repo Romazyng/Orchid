@@ -25,7 +25,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li className="bg-[#CCD0CF]/80 rounded-[36px] w-[106px] h-[55px] flex items-center justify-center text-black">
-                  <Link href="/login" className="text-center">
+                  <Link href="/auth/login" className="text-center">
                     Sign in
                   </Link>
                 </li>

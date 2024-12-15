@@ -1,8 +1,9 @@
+'use client'
 import Image from "next/image";
 export default function Blocks() {
     return ( 
         <div>
-            <section className="mt-52 flex justify-center h-[33rem] ">
+            <section className="mt-44 flex justify-center h-[33rem] ">
                 <div className="w-2/3 h-full relative ">
                 <div className="absolute top-0 left-0 bg-black w-64 h-64 rounded-[13px]">
                     <p className="text-[20px] text-white font-semibold mt-5 ml-5">

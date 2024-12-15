@@ -1,13 +1,185 @@
 import WhyUs from "./ui/WhyUs";
-import HeroSection from "./ui/HeroSection";
+import Image from "next/image";
 import Blocks from "./ui/Blocks";
+import Navbar from "./ui/Navbar";
 
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen md:max-w-full" >
-      <HeroSection/>
+      <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
+            <div className="text-center mb-[5%] lg:h-48 sm:w-full">
+              <p className="text-[5vw] md:text-[4rem]">
+                <strong>Build your</strong> <i>own</i> <strong>story</strong>
+              </p>
+              <h1 className="text-[#747272] text-[3vw] md:text-[2rem]">
+                based on your preferences.
+              </h1>
+            </div>
+            <div className="absolute bottom-0 w-[50%] md:flex justify-between items-end">
+              <Image
+                src="/clKoZCgTHyhJ4eICoT1bJiWb91Q1.png"
+                width={251}
+                height={251}
+                alt="Image 1"
+                draggable={false}
+                className="w-[15vw] md:w-[15rem] hidden md:block"
+              />
+              <div className="flex justify-center items-end w-[15vw] md:w-[4rem] translate-y-[-20px]">
+              <svg
+              className="relative"
+              width="100%"
+              height="100%"
+              viewBox="0 0 63 63"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31.5 57.75C45.9975 57.75 57.75 45.9975 57.75 31.5C57.75 17.0025 45.9975 5.25 31.5 5.25C17.0025 5.25 5.25 17.0025 5.25 31.5C5.25 45.9975 17.0025 57.75 31.5 57.75Z"
+                stroke="#B3B3B3"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M32 18.75V43.25M32 43.25L44.25 31M32 43.25L19.75 31"
+                stroke="#B3B3B3"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+              </div>
+              <Image
+                src="/uojAWLm1FnK0nG6eUDQvr0L7SIo1.png"
+                width={251}
+                height={251}
+                alt="Image 2"
+                draggable={false}
+                className="w-[15vw] md:w-[15rem] hidden md:block"
+              />
+            </div>
+      </section>
+      <Navbar/>
       <WhyUs/>
       <Blocks/>
+      <section className="flex flex-col items-center mt-48 h-96 text-black ">
+            <div className="text-[6vw] md:text-[4rem] font-medium">
+              <span>
+                Our job is to help you find that<br/> <i className="font-light">idea</i> and make it legendary
+              </span>
+            </div>
+      </section>
+      <section className="text-[#747272] md:text-[1.5rem] font-normal flex space-x-[28rem] place-content-center mt-5 ">
+          <div className=" w-[334px] h-[344px] rounded-[13px] flex flex-col">
+              <p className="mt-10 ml-5 text-[20px] text-black font-semibold">
+                  Unleash your potential
+                </p>
+              <Image
+                src='/cats.png'
+                alt="cats"
+                width={334}
+                height={270}
+                className="object-cover mt-auto rounded-[13px]"
+              />
+          </div>
+          {/* <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.5 54H85.5M85.5 54L54 22.5M85.5 54L54 85.5" stroke="#1E1E1E" strokeWidth="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg> */}
+          <div className=" w-[334px] h-[344px] rounded-[13px] flex flex-col justify-center items-center relative">
+          <div className="absolute top-0 mt-16">
+            <p className="text-[20px] text-black font-semibold">
+              Get better at <br />
+              creating
+            </p>
+          </div>
+          <Image
+            src='/meet.png'
+            alt="meet"
+            width={446}
+            height={257}
+            className="mt-32"
+          />
+        </div>
+      </section>
+      <section>
+        <div className=" flex flex-col items-center mt-36 h-64">
+          <p className="font-medium text-[6vw] md:text-[2.5rem] ">
+            Meet the team
+          </p>
+        </div>
+      </section>
+      <section className=" min-h-screen">
+        <div className="flex justify-around px-[21rem]">
+          <Image
+            src='/Chelka_Ch_Chb.png'
+            alt="black"
+            width={355}
+            height={355}
+            className=""
+          />
+          <div className="space-y-4 mt-16 pl-4">
+            <p className="font-medium text-[24px]">
+              Roman Chernetsky
+            </p>
+            <p className="font-normal text-[20px] text-[#0099FF]">
+              CEO, Frontend
+            </p>
+            <p className="font-light text-[18px] text-[#747272]">
+            I believe that success comes from bold ideas, relentless determination, and the courage to challenge the status quo. Every challenge is an opportunity to grow, 
+            and every setback a lesson to move forward stronger. My mission is to inspire my team to dream bigger, push boundaries, and never settle for less than excellence. 
+            Together, we have the power to turn vision into reality, to innovate fearlessly, 
+            and to make a lasting impact on the world. 
+            Let's continue to rise, lead with purpose, and achieve greatness—one step at a time.
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-around px-[21rem]">
+          <div className="space-y-4 mt-16 pl-4">
+            <p className="font-medium text-[24px]">
+              Nikita Gryaznov
+            </p>
+            <p className="font-normal text-[20px] text-[#0099FF]">
+              Co-Founder, Backend
+            </p>
+            <p className="font-light text-[18px] text-[#747272]">
+            I want to remind you that our work is the backbone of innovation. 
+            Each line of code holds the potential to change the game. Embrace challenges as
+            opportunities to learn and grow. Don’t fear failure; let it guide you to better solutions. 
+            Collaboration is key—leverage your teammates' strengths, share ideas, and ask for help.
+            </p>
+          </div>
+          <Image
+            src='/Chelka_B_Chb.png'
+            alt="white"
+            width={355}
+            height={355}
+          />
+        </div>
+        <div className="flex justify-around px-[21rem]">
+          <Image
+            src='/Ochki_Chb.png'
+            alt="glasses"
+            width={355}
+            height={355}
+            className="transform -scale-x-100"
+          />
+          <div className="space-y-4 mt-16 pl-4">
+            <p className="font-medium text-[24px]">
+              Klim Popov
+            </p>
+            <p className="font-normal text-[20px] text-[#0099FF]">
+              Co-Founder, AI
+            </p>
+            <p className="font-light text-[18px] text-[#747272]">
+              Through the journey, my passion for AI has driven me to push the limits of what’s possible. 
+              I believe we have the power to transform lives and shape a better world together. 
+              Let’s continue to dream big and create the future we envision!
+              As Co-founder and AI Developer at Orchid, I’m driven to push the boundaries of innovation, 
+              create intelligent solutions, and shape the future with impactful technology.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
