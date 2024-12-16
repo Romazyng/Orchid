@@ -1,8 +1,10 @@
 'use client'
 
 import Image from "next/image";
+import ShowContent from "../utils/ShowContent";
 
 export default function WhyUs() {
+  ShowContent()
   return (
     <div>
       <section className="flex flex-col items-center mt-10 min-h-screen text-black">
@@ -18,8 +20,8 @@ export default function WhyUs() {
         <p className="text-[6vw] md:text-[2.8rem] font-medium text-[#747272]">You want to turn your ideas into reality</p>
         <div className="mt-10 text-[6vw] md:text-[2rem] font-semibold text-[#11212D] text-center">
           <p>
-          More than a half of users feel like they are out of <span className="bg-black text-white px-1">inspiration</span> or any<br/> 
-          kind of <span className="bg-black text-white px-1">idea</span> of what they want to make, and this is what <span className="bg-black text-white px-1">we are here for</span>
+          More than a half of users feel like they are out of <span className="bg-black text-white px-1 fade-in opacity-0 transform translate-y-10 transition-all duration-3000">inspiration</span> or any<br/> 
+          kind of <span className="bg-black text-white px-1 fade-in opacity-0 transform translate-y-10 transition-all duration-2000">idea</span> of what they want to make, and this is what <span className="bg-black text-white px-1 fade-in opacity-0 transform translate-y-10 transition-all duration-2000">we are here for</span>
           </p>
         </div>
       </section>
