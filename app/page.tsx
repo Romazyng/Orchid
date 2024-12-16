@@ -2,6 +2,7 @@ import WhyUs from "./ui/WhyUs";
 import Image from "next/image";
 import Blocks from "./ui/Blocks";
 import Navbar from "./ui/Navbar";
+import FAQSection from "./ui/FAQ";
 
 export default function Home() {
   return (
@@ -220,6 +221,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+    </section>
+    <section className="mt-60 bg-slate-600">
+      <div>
+        <h2 className="text-center font-semibold text-[2.5rem]">Frequently asked questions</h2>
+      </div>
+      <FAQSection/>
     </section>
     </main>
   );
