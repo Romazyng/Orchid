@@ -180,6 +180,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="flex justify-between items-center">
+        <div className="px-[21rem] py-8 mt-32">
+          <h2 className="text-center font-semibold text-[2.5rem]">How it works?</h2>
+          <div className="grid grid-cols-2 gap-4 mt-16">
+            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[37rem] h-[14rem] flex justify-start items-end">
+              <div>
+                <h3 className="text-[1.2rem] font-medium mb-2">Gathering Your Ideas</h3>
+                <p className="text-[0.8rem] font-medium text-[#747272]">
+                  We start by understanding your vision. You provide key concepts, themes, and keywords that define your goals. These inputs are stored locally, forming the foundation of the content creation process.
+                </p>
+              </div>
+            </div>
+            <div className="p-6 rounded-[13px] col-span-1 w-[30rem] h-[14rem] flex justify-start items-end ml-12">
+              <div>
+                  <h3 className="text-[1.2rem] font-medium text-black mb-2">Contextual Analysis</h3>
+                  <p className="text-[0.8rem] font-medium text-[#747272]">
+                  Next, our platform analyzes your keywords using advanced AI. 
+                  We assess the tone, style, and context to ensure 
+                  the content aligns perfectly with your intended message and purpose.
+                  </p>
+                </div>
+            </div>
+            <div className="p-6 rounded-[13px] col-span-1 w-[28rem] h-[18rem] flex justify-start items-end">
+              <div>
+                <h3 className="text-[1.2rem] font-medium text-black mb-2">Content Generation</h3>
+                <p className="text-[0.8rem] font-medium text-[#747272]">
+                  Our AI then generates high-quality, tailored text based on your input. The content is crafted to match your needs, whether it’s creative, formal, or something in between.
+                </p>
+              </div>
+            </div>
+            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[42rem] h-[18rem] flex justify-start items-end -translate-x-20">
+              <div>
+                <h3 className="text-[1.2rem] font-medium mb-2">Review and Refine</h3>
+                <p className="text-[0.8rem] font-medium text-[#747272]">
+                  Finally, you can review the generated content and make any adjustments if needed. Our platform gives you the flexibility to refine the text until it meets your exact expectations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
     </main>
   );
 }
