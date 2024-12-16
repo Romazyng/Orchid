@@ -64,9 +64,8 @@ const FAQSection = () => {
                 <Image
                     src={faq.pic || '/default-icon.png'}
                     alt="icon"
-                    width={24} // задайте размер картинки
-                    height={24} // задайте размер картинки
-                    className="" // отступ между иконкой и текстом
+                    width={24} 
+                    height={24} 
                 />
             <button
               onClick={() => toggleFAQ(index)}

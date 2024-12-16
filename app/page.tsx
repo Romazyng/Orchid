@@ -1,9 +1,12 @@
+'use client'
+
 import WhyUs from "./ui/WhyUs";
 import Image from "next/image";
 import Blocks from "./ui/Blocks";
 import Navbar from "./ui/Navbar";
 import FAQSection from "./ui/FAQ";
 import Reviews from "./ui/Reviews";
+import ShowContent from "./utils/ShowContent";
 
 import { Marcellus_SC } from 'next/font/google';
 
@@ -13,18 +16,12 @@ const marcellus = Marcellus_SC({
   variable: '--font-marcellus', 
 });
 
-const scrollToSection = () => {
-  const targetSection = document.getElementById('target-section');
-  if (targetSection) {
-    targetSection.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
 export default function Home() {
+  ShowContent();
   return (
     <main className="flex flex-col min-h-screen md:max-w-full" >
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
-            <div className="text-center mb-[5%] lg:h-48 sm:w-full">
+            <div className="text-center mb-[5%] lg:h-48 sm:w-full fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <p className="text-[5vw] md:text-[4rem]">
                 <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
               </p>
@@ -72,14 +69,18 @@ export default function Home() {
                 height={251}
                 alt="Image 2"
                 draggable={false}
-                className="w-[15vw] md:w-[15rem] hidden md:block"
+                className="w-[15vw] md:w-[15rem] hidden md:block "
               />
             </div>
       </section>
       <Navbar/>
-      <WhyUs/>
-      <Blocks/>
-      <section className="flex flex-col items-center mt-48 h-96 text-black ">
+      <div className="fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
+        <WhyUs/>
+      </div>
+      <div className="fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
+        <Blocks/>
+      </div>
+      <section className="flex flex-col items-center mt-48 h-96 text-black fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
             <div className="text-[6vw] md:text-[4rem] font-medium">
               <span>
                 Our job is to help you find that<br/> <i className="font-light">idea</i> and make it legendary
@@ -118,7 +119,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section>
+      <section className="fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
         <div className=" flex flex-col items-center mt-36 h-64">
           <p className="font-medium text-[6vw] md:text-[2.5rem] ">
             Meet the team
@@ -126,7 +127,7 @@ export default function Home() {
         </div>
       </section>
       <section className=" min-h-screen">
-        <div className="flex justify-around px-[21rem]">
+        <div className="flex justify-around px-[21rem] fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
           <Image
             src='/Chelka_Ch_Chb.png'
             alt="black"
@@ -150,7 +151,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="flex justify-around px-[21rem]">
+        <div className="flex justify-around px-[21rem] fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
           <div className="space-y-4 mt-16 pl-4">
             <p className="font-medium text-[24px]">
               Nikita Gryaznov
@@ -172,7 +173,7 @@ export default function Home() {
             height={355}
           />
         </div>
-        <div className="flex justify-around px-[21rem]">
+        <div className="flex justify-around px-[21rem] fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
           <Image
             src='/Ochki_Chb.png'
             alt="glasses"
@@ -201,7 +202,7 @@ export default function Home() {
         <div className="px-[21rem] py-8 mt-32">
           <h2 className="text-center font-semibold text-[2.5rem]">How it works?</h2>
           <div className="grid grid-cols-2 gap-4 mt-16">
-            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[37rem] h-[14rem] flex justify-start items-end">
+            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[37rem] h-[14rem] flex justify-start items-end fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <div>
                 <h3 className="text-[1.2rem] font-medium mb-2">Gathering Your Ideas</h3>
                 <p className="text-[0.8rem] font-medium text-[#747272]">
@@ -227,7 +228,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[42rem] h-[18rem] flex justify-start items-end -translate-x-20">
+            <div className="bg-black text-white p-6 rounded-[13px] col-span-1 w-[42rem] h-[18rem] flex justify-start items-end -translate-x-20 fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <div>
                 <h3 className="text-[1.2rem] font-medium mb-2">Review and Refine</h3>
                 <p className="text-[0.8rem] font-medium text-[#747272]">
