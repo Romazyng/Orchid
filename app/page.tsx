@@ -3,6 +3,15 @@ import Image from "next/image";
 import Blocks from "./ui/Blocks";
 import Navbar from "./ui/Navbar";
 import FAQSection from "./ui/FAQ";
+import Reviews from "./ui/Reviews";
+
+import { Marcellus_SC } from 'next/font/google';
+
+const marcellus = Marcellus_SC({
+  subsets: ['latin'], 
+  weight: '400',      
+  variable: '--font-marcellus', 
+});
 
 export default function Home() {
   return (
@@ -10,7 +19,7 @@ export default function Home() {
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
             <div className="text-center mb-[5%] lg:h-48 sm:w-full">
               <p className="text-[5vw] md:text-[4rem]">
-                <strong>Build your</strong> <i>own</i> <strong>story</strong>
+                <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
               </p>
               <h1 className="text-[#747272] text-[3vw] md:text-[2rem]">
                 based on your preferences.
@@ -27,7 +36,7 @@ export default function Home() {
               />
               <div className="flex justify-center items-end w-[15vw] md:w-[4rem] translate-y-[-20px]">
               <svg
-              className="relative"
+              className="relative animate-bounce"
               width="100%"
               height="100%"
               viewBox="0 0 63 63"
@@ -222,11 +231,52 @@ export default function Home() {
           </div>
         </div>
     </section>
-    <section className="mt-60 bg-slate-600">
+    <section className="mt-60">
       <div>
         <h2 className="text-center font-semibold text-[2.5rem]">Frequently asked questions</h2>
       </div>
+    </section>
       <FAQSection/>
+      <Reviews/>
+      <section className="bg-black h-[1400px] mt-56">
+      <div className=" w-full h-44">
+        <h2 className="text-center font-medium text-[4rem] mt-24 text-white">Tell us about yourself</h2>
+      </div>
+      <div className="flex justify-center items-center">
+      <div className="flex flex-col gap-8 w-[80%] max-w-lg">
+        <input
+          type="text"
+          placeholder="Enter your first name"
+          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
+        />
+        <input
+          type="text"
+          placeholder="Enter your last name"
+          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
+        />
+        <input
+          type="text"
+          placeholder="Enter your email"
+          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
+        />
+        <input
+          type="text"
+          placeholder="Enter your message"
+          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
+        />
+        <button className="border-2 rounded-[13px] border-gray-400 mt-14 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 self-center w-[120%]">
+          Submit
+        </button>
+      </div>
+    </div>
+    <div className="relative">
+      <p className={`${marcellus.className} absolute top-[-2rem] left-1/2 transform -translate-x-1/2 text-white text-[2rem] font-bold`}>
+        Orchid
+      </p>
+      <p className="text-center font-normal text-[4rem] mt-64 text-white">
+        <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
+      </p>
+    </div>
     </section>
     </main>
   );
