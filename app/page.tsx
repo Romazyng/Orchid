@@ -13,6 +13,13 @@ const marcellus = Marcellus_SC({
   variable: '--font-marcellus', 
 });
 
+const scrollToSection = () => {
+  const targetSection = document.getElementById('target-section');
+  if (targetSection) {
+    targetSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen md:max-w-full" >
@@ -238,7 +245,7 @@ export default function Home() {
     </section>
       <FAQSection/>
       <Reviews/>
-      <section className="bg-black h-[1400px] mt-56">
+      <section id='contact' className="bg-black h-[1250px] mt-56">
       <div className=" w-full h-44">
         <h2 className="text-center font-medium text-[4rem] mt-24 text-white">Tell us about yourself</h2>
       </div>
@@ -247,7 +254,9 @@ export default function Home() {
         <input
           type="text"
           placeholder="Enter your first name"
-          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
+          className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+      invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
         />
         <input
           type="text"
@@ -264,7 +273,7 @@ export default function Home() {
           placeholder="Enter your message"
           className="border-b-2 border-gray-400 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 placeholder-gray-500"
         />
-        <button className="border-2 rounded-[13px] border-gray-400 mt-14 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 self-center w-[120%]">
+        <button className="hover:text-sky-500 hover:border-sky-500 border-2 rounded-[13px] border-gray-400 mt-14 bg-transparent p-4 text-xl text-white focus:outline-none focus:border-blue-500 self-center w-[120%]">
           Submit
         </button>
       </div>
