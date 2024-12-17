@@ -27,13 +27,13 @@ const FAQSection = () => {
     {
         question: "Is the content generated unique?",
         answer:
-          "Yes! Our AI generates completely original content based on your input. Every piece of text is customized to your specifications, ensuring it’s unique and tailored to your needs.",
+          "Yes! Our AI generates completely original content based on your input. Every piece of text is customized to your specifications, ensuring its unique and tailored to your needs.",
         pic: '/icons/4.png'
     },
     {
         question: "Can I make changes to the generated text?",
         answer:
-        "Absolutely. After the content is generated, you have the flexibility to review and edit it as needed. Our platform allows for easy refinement to ensure the final result is exactly what you’re looking for.",
+        "Absolutely. After the content is generated, you have the flexibility to review and edit it as needed. Our platform allows for easy refinement to ensure the final result is exactly what youre looking for.",
         pic: '/icons/5.png'
     },
     {
