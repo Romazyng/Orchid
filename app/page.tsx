@@ -162,7 +162,7 @@ export default function Home() {
             <p className="font-light text-[18px] text-[#747272]">
             I want to remind you that our work is the backbone of innovation. 
             Each line of code holds the potential to change the game. Embrace challenges as
-            opportunities to learn and grow. Don’t fear failure; let it guide you to better solutions. 
+            opportunities to learn and grow. Dont fear failure; let it guide you to better solutions. 
             Collaboration is key—leverage your teammates' strengths, share ideas, and ask for help.
             </p>
           </div>
@@ -224,7 +224,7 @@ export default function Home() {
               <div>
                 <h3 className="text-[1.2rem] font-medium text-black mb-2">Content Generation</h3>
                 <p className="text-[0.8rem] font-medium text-[#747272]">
-                  Our AI then generates high-quality, tailored text based on your input. The content is crafted to match your needs, whether it’s creative, formal, or something in between.
+                  Our AI then generates high-quality, tailored text based on your input. The content is crafted to match your needs, whether its creative, formal, or something in between.
                 </p>
               </div>
             </div>
