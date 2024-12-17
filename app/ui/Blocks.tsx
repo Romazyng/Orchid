@@ -25,9 +25,9 @@ export default function Blocks() {
           </div>
           <div className="absolute bottom-0 left-0 bg-black w-64 h-64 rounded-[13px] flex justify-center items-center">
             <p className="text-[20px] text-white font-semibold mr-8">
-            Or even there're <br/>
+            Or even there&apos;re <br/>
             so many ideas so <br/>
-            it's getting hard <br/>
+            it&apos;s getting hard <br/>
             to choose <br/>
             the best one<br/>
             </p>

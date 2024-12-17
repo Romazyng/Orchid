@@ -30,7 +30,7 @@ export default function WhyUs() {
         We know the feeling of being unable to create <br/>
         something new,
         something, that will blow <br/>
-        people's mind. For us, the main goal<br/>
+        people&apos;s mind. For us, the main goal<br/>
         is to give people inspiration, give them <br/>
         something, that they
         will turn into something great.<br/>

@@ -147,7 +147,7 @@ export default function Home() {
             and every setback a lesson to move forward stronger. My mission is to inspire my team to dream bigger, push boundaries, and never settle for less than excellence. 
             Together, we have the power to turn vision into reality, to innovate fearlessly, 
             and to make a lasting impact on the world. 
-            Let's continue to rise, lead with purpose, and achieve greatness—one step at a time.
+            Let&apos;s continue to rise, lead with purpose, and achieve greatness—one step at a time.
             </p>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function Home() {
             I want to remind you that our work is the backbone of innovation. 
             Each line of code holds the potential to change the game. Embrace challenges as
             opportunities to learn and grow. Dont fear failure; let it guide you to better solutions. 
-            Collaboration is key—leverage your teammates' strengths, share ideas, and ask for help.
+            Collaboration is key—leverage your teammates&apos; strengths, share ideas, and ask for help.
             </p>
           </div>
           <Image
