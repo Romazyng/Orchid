@@ -45,10 +45,11 @@ const FAQSection = () => {
   ];
 
   // Хранение состояния активного вопроса
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
 
   // Функция для переключения активного вопроса
-  const toggleFAQ = (index:any) => {
+  const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
