@@ -189,10 +189,10 @@ export default function Home() {
               Co-Founder, AI
             </p>
             <p className="font-light text-[18px] text-[#747272]">
-              Through the journey, my passion for AI has driven me to push the limits of what’s possible. 
+              Through the journey, my passion for AI has driven me to push the limits of whats possible. 
               I believe we have the power to transform lives and shape a better world together. 
-              Let’s continue to dream big and create the future we envision!
-              As Co-founder and AI Developer at Orchid, I’m driven to push the boundaries of innovation, 
+              Lets continue to dream big and create the future we envision!
+              As Co-founder and AI Developer at Orchid, Im driven to push the boundaries of innovation, 
               create intelligent solutions, and shape the future with impactful technology.
             </p>
           </div>

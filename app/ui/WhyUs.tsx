@@ -16,7 +16,7 @@ export default function WhyUs() {
           alt='Cat'
           className="transform -scale-x-100"
         />
-        <p className="text-[6vw] md:text-[2.8rem] font-medium mt-5">You don’t want a contentmaker</p>
+        <p className="text-[6vw] md:text-[2.8rem] font-medium mt-5">You dont want a contentmaker</p>
         <p className="text-[6vw] md:text-[2.8rem] font-medium text-[#747272]">You want to turn your ideas into reality</p>
         <div className="mt-10 text-[6vw] md:text-[2rem] font-semibold text-[#11212D] text-center">
           <p>
@@ -34,7 +34,7 @@ export default function WhyUs() {
         is to give people inspiration, give them <br/>
         something, that they
         will turn into something great.<br/>
-        With Orchid, you’re not just creating, you’re crafting <br/>
+        With Orchid, youre not just creating, youre crafting <br/>
         something that can leave a lasting impact. <br/>
         </p>
         <p className="">

@@ -1,21 +1,13 @@
-'use client'
+'use client';
 
 import { supabase } from '../lib/initSupabase';
 import { useState } from 'react';
 
-// Тип данных для пользователя
-type User = {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-};
-
 export default function AddUser() {
-  const [username, setUsername] = useState<string>(''); // Имя нового пользователя
-  const [email, setEmail] = useState<string>('');       // Email нового пользователя
-  const [password, setPassword] = useState<string>(''); // Пароль нового пользователя
-  const [status, setStatus] = useState<string>('');      // Статус операции
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleAddUser = async () => {
     if (!username || !email || !password) {
@@ -24,25 +16,26 @@ export default function AddUser() {
     }
 
     try {
-      // Добавление нового пользователя в таблицу 'users'
+      // Вызов функции add_user через RPC
       const { data, error } = await supabase
-        .from('users')  // Название таблицы
-        .insert([{ username, email, password }])
-        .select();      // Добавлен метод select() для получения данных после вставки
+        .rpc('add_user', {
+          new_username: username,
+          new_email: email,
+          new_password: password
+        });
 
-      // Проверка на ошибку
       if (error) {
-        setStatus(`Ошибка при добавлении пользователя: ${error.message}`);
+        setStatus(`Ошибка: ${error.message}`);
       } else {
-        // Проверка на успешное добавление данных
+        // Обрабатываем успешный ответ
         if (data && data.length > 0) {
-          setStatus(`Новый пользователь добавлен! ID: ${data[0]?.id}`);
+          setStatus(`Пользователь добавлен! ID: ${data[0].id}`);
         } else {
-          setStatus('Ошибка: данные не были получены.');
+          setStatus('Ошибка добавления пользователя.');
         }
       }
     } catch (error) {
-      setStatus('Произошла ошибка при добавлении пользователя.');
+      setStatus('Произошла ошибка.');
       console.error(error);
     }
   };
@@ -50,45 +43,25 @@ export default function AddUser() {
   return (
     <div>
       <h1>Добавить нового пользователя</h1>
-
-      {status && <p>{status}</p>}
-
-      <div>
-        <label>
-          Имя пользователя:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Введите имя пользователя"
-          />
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Введите email"
-          />
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Пароль:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Введите пароль"
-          />
-        </label>
-      </div>
-
+      <p>{status}</p>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Имя пользователя"
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Пароль"
+      />
       <button onClick={handleAddUser}>Добавить</button>
     </div>
   );

@@ -7,7 +7,7 @@ import Image from "next/image";
 const FAQSection = () => {
   const faqs = [
     {
-      question: "What is Orchid’s text generation platform?",
+      question: "What is Orchids text generation platform?",
       answer:
         "Orchid's platform is an AI-powered tool that helps you create high-quality, customized text based on your input. It's designed to streamline content creation by analyzing your ideas and generating tailored, ready-to-use content quickly.",
         pic: '/icons/1.png'
