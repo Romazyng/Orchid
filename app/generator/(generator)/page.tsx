@@ -1,5 +1,16 @@
+import InputField from "./InputField";
+
 export default function Generate() {
     return(
-        <h1>Hello</h1>
+        <section className="h-screen bg-black flex items-center justify-center">
+            <div className="md:text-[3rem] font-medium text-white mb-36">
+              <p>
+                WHAT'S ON YOUR MIND TODAY?
+              </p>
+            <div className="flex items-center justify-center mt-11">
+              <InputField/>
+            </div>
+            </div>
+      </section>
     )
 }
