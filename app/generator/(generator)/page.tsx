@@ -5,7 +5,7 @@ export default function Generate() {
         <section className="h-screen bg-black flex items-center justify-center">
             <div className="md:text-[3rem] font-medium text-white mb-36">
               <p>
-                WHAT&apos;S ON YOUR MIND TODAY?
+                WHATS ON YOUR MIND TODAY?
               </p>
             <div className="flex items-center justify-center mt-11">
               <InputField/>

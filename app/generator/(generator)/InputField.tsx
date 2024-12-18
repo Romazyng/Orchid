@@ -1,3 +1,11 @@
+'use client'
+
+import { useState } from "react"
+
+const [keyword, useKeyword] = useState(null)
+
+
+
 export default function InputField() {
     return(
             <input
