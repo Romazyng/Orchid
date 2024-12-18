@@ -51,7 +51,7 @@ export default function InputField() {
                         <span className="mr-2">{keyword}</span>
                         <button 
                             onClick={() => handleRemove(index)} 
-                            className="text-white hover:text-red-500 focus:outline-none"
+                            className="text-white hover:text-red-500 focus:outline-none animate-spin"
                         >
                             ✕
                         </button>
