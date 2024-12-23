@@ -39,7 +39,7 @@ export default function InputField() {
         setLoading(true);
 
         try {
-            const response = await fetch("https://orchid-ochre.vercel.app/generator", {
+            const response = await fetch("localhost:3000/generator", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
