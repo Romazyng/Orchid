@@ -67,7 +67,7 @@ def generate_answer(model, tokenizer, question, max_sequence_length, num_words=5
     return ' '.join(output_text)
 
 # Определение маршрута для получения ответа
-@app.post("/generator")
+@app.post("https://orchid-ochre.vercel.app/generator")
 async def get_answer(request: QuestionRequest):
     answer = generate_answer(model, tokenizer, request.question, max_sequence_length)
     return {"answer": answer}
