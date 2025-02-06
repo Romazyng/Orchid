@@ -1,4 +1,8 @@
 import { LoginForm } from "../../components/ui/login-form"
+<<<<<<< HEAD
+=======
+import { Suspense  } from 'react';
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
 
 import { Marcellus_SC } from 'next/font/google';
 import Link from "next/link";
@@ -20,7 +24,13 @@ export default function LoginPage() {
             </p>
           </div>
         </Link>
+<<<<<<< HEAD
         <LoginForm />
+=======
+        <Suspense>
+          <LoginForm />
+        </Suspense >
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
       </div>
     </div>
   )

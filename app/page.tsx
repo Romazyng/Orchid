@@ -1,5 +1,6 @@
 'use client'
 
+<<<<<<< HEAD
 import WhyUs from "../app/ui/components/WhyUs";
 import Image from "next/image";
 import Blocks from "../app/ui/components/Blocks";
@@ -7,6 +8,15 @@ import Navbar from "../app/ui/components/Navbar";
 import FAQSection from "../app/ui/components/FAQ";
 import Reviews from "../app/ui/components/Reviews";
 import ShowContent from "./utils/ShowContent";
+=======
+import WhyUs from "./ui/WhyUs";
+import Image from "next/image";
+import Blocks from "./ui/Blocks";
+import FAQSection from "./ui/FAQ";
+import Reviews from "./ui/Reviews";
+import ShowContent from "./utils/ShowContent";
+import { motion, useSpring } from "framer-motion"
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
 
 import { Marcellus_SC } from 'next/font/google';
 
@@ -19,8 +29,12 @@ const marcellus = Marcellus_SC({
 export default function Home() {
   ShowContent();
   return (
+<<<<<<< HEAD
     <main className="flex flex-col min-h-screen max-w-full" >
       
+=======
+    <main className="flex flex-col min-h-screen md:max-w-full" >
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
             <div className="text-center mb-[5%] lg:h-48 sm:w-full fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <p className="text-[5vw] md:text-[4rem]">
@@ -74,7 +88,10 @@ export default function Home() {
               />
             </div>
       </section>
+<<<<<<< HEAD
       <Navbar/>
+=======
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
       <div className="fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
         <WhyUs/>
       </div>

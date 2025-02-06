@@ -50,6 +50,7 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+<<<<<<< HEAD
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
@@ -60,6 +61,8 @@ export default {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+=======
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
   			}
   		},
   		borderRadius: {

@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { RegistrationForm } from "../../../components/ui/register-form"
+<<<<<<< HEAD
+import { RegistrationForm } from "../../components/ui/register-form"
+=======
+import { RegistrationForm } from "../../components/ui/register-form"
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
 
 import { Marcellus_SC } from 'next/font/google';
 

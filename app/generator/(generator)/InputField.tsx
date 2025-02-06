@@ -1,5 +1,9 @@
 'use client';
 
+<<<<<<< HEAD
+=======
+import Typewriter from "@/app/ui/typewriter";
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
 import { useState } from "react";
 
 export default function InputField() {
@@ -8,6 +12,10 @@ export default function InputField() {
     const [generatedText, setGeneratedText] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter" && inputValue.trim()) {
             if (keywords.length >= 5) {
@@ -70,7 +78,11 @@ export default function InputField() {
             <input
                 id="word"
                 type="text"
+<<<<<<< HEAD
                 placeholder="Введите ключевое слово"
+=======
+                placeholder="Hello"
+>>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
                 className="bg-[#A19E9E] p-4 text-xl w-[473px] text-white focus:outline-none rounded-[10px] focus:border-blue-500 placeholder-gray-500 mb-4"
                 value={inputValue}
                 onChange={handleChange}
