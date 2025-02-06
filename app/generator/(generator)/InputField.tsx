@@ -45,7 +45,7 @@ export default function InputField() {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ question: keywords.join(" ") }), // Изменено на "question"
+                body: JSON.stringify({ question: keywords.join(" ") }), 
             });
 
             if (!response.ok) {
@@ -56,7 +56,7 @@ export default function InputField() {
             }
 
             const data = await response.json();
-            setGeneratedText(data.answer); // Изменено на "answer", чтобы соответствовать серверному ответу
+            setGeneratedText(data.answer); 
         } catch (error) {
             console.error("Ошибка отправки данных:", error);
             alert("Произошла ошибка при отправке данных. Проверьте сервер.");

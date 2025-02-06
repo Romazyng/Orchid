@@ -1,11 +1,11 @@
 'use client'
 
-import WhyUs from "./ui/WhyUs";
+import WhyUs from "../app/ui/components/WhyUs";
 import Image from "next/image";
-import Blocks from "./ui/Blocks";
-import Navbar from "./ui/Navbar";
-import FAQSection from "./ui/FAQ";
-import Reviews from "./ui/Reviews";
+import Blocks from "../app/ui/components/Blocks";
+import Navbar from "../app/ui/components/Navbar";
+import FAQSection from "../app/ui/components/FAQ";
+import Reviews from "../app/ui/components/Reviews";
 import ShowContent from "./utils/ShowContent";
 
 import { Marcellus_SC } from 'next/font/google';
@@ -19,7 +19,8 @@ const marcellus = Marcellus_SC({
 export default function Home() {
   ShowContent();
   return (
-    <main className="flex flex-col min-h-screen md:max-w-full" >
+    <main className="flex flex-col min-h-screen max-w-full" >
+      
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
             <div className="text-center mb-[5%] lg:h-48 sm:w-full fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <p className="text-[5vw] md:text-[4rem]">

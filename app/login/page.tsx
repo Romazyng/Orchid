@@ -1,4 +1,4 @@
-import { LoginForm } from "../../../components/ui/login-form"
+import { LoginForm } from "../../components/ui/login-form"
 
 import { Marcellus_SC } from 'next/font/google';
 import Link from "next/link";
