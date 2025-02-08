@@ -71,7 +71,3 @@
 
 ## Лицензия
 MIT License
-<<<<<<< HEAD
-=======
->>>>>>> eaf36ca9955e9f65085fca98c61c6b94f9c7cba4
->>>>>>> 2169ae3c96b3401f59bb5bae05ace8d392ad515a
