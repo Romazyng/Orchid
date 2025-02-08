@@ -9,7 +9,6 @@ export default function InputField() {
     const [generatedText, setGeneratedText] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
 
-
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter" && inputValue.trim()) {
             if (keywords.length >= 5) {
@@ -72,14 +71,13 @@ export default function InputField() {
             <input
                 id="word"
                 type="text"
-                placeholder="Hello"
+                placeholder="Введите ключевое слово"
                 className="bg-[#A19E9E] p-4 text-xl w-[473px] text-white focus:outline-none rounded-[10px] focus:border-blue-500 placeholder-gray-500 mb-4"
                 value={inputValue}
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
             />
             <div className="flex items-center justify-center">
-
             <div className="flex gap-2  mb-4 w-max">
                 {keywords.map((keyword, index) => (
                     <div

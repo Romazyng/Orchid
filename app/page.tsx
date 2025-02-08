@@ -9,6 +9,7 @@ import ShowContent from "./utils/ShowContent";
 import { motion, useSpring } from "framer-motion"
 
 import { Marcellus_SC } from 'next/font/google';
+import Navbar from "./ui/Navbar";
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'], 
@@ -20,6 +21,7 @@ export default function Home() {
   ShowContent();
   return (
     <main className="flex flex-col min-h-screen md:max-w-full" >
+      <Navbar/>
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
             <div className="text-center mb-[5%] lg:h-48 sm:w-full fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <p className="text-[5vw] md:text-[4rem]">
@@ -290,5 +292,3 @@ export default function Home() {
     </main>
   );
 }
-
-
