@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { RegistrationForm } from "../../components/ui/register-form"
+import { RegistrationForm } from "@/components/ui/register-form";
 
 import { Marcellus_SC } from 'next/font/google';
 

@@ -23,7 +23,7 @@ export function RegistrationForm({
           <CardDescription>
             <div className="text-center text-sm">
               Already have an account?{" "}
-              <Link href="/api/login" className="underline underline-offset-4">
+              <Link href="/login/signin" className="underline underline-offset-4">
                 Log in
               </Link>
             </div>
@@ -32,7 +32,6 @@ export function RegistrationForm({
         <CardContent>
           <form>
             <div className="flex flex-col gap-6">
-              {/* Поле для имени */}
               <div className="grid gap-2">
                 <Label htmlFor="name">Full Name</Label>
                 <Input
@@ -42,7 +41,6 @@ export function RegistrationForm({
                   required
                 />
               </div>
-              {/* Поле для email */}
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -52,7 +50,6 @@ export function RegistrationForm({
                   required
                 />
               </div>
-              {/* Поле для пароля */}
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
@@ -62,7 +59,6 @@ export function RegistrationForm({
                   required
                 />
               </div>
-              {/* Поле для подтверждения пароля */}
               <div className="grid gap-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
                 <Input

@@ -25,7 +25,7 @@ export default function Navbar() {
                   Orchid
                 </Link>
               </div>
-              <ul className=" flex items-center space-x-4"> {/* Увеличен space-x */}
+              <ul className=" flex items-center space-x-4"> 
                 <li className="flex items-center justify-center">
                   <a onClick={scrollToSection} className="text-center cursor-pointer">
                     Contact us

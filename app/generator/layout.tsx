@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { auth } from "@/auth"
+import Image from "next/image"
 
 export default function GeneratorLayout({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -10,7 +12,7 @@ export default function GeneratorLayout({ children }: { children: React.ReactNod
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen w-full">
       <aside
         className={`bg-[#343541] bg-opacity-50 text-white p-4 transition-all duration-300 ${
           collapsed ? 'w-16' : 'w-64'
@@ -33,12 +35,9 @@ export default function GeneratorLayout({ children }: { children: React.ReactNod
             <li className="hover:bg-[#484b52] p-2 rounded">
               {!collapsed ? <span>Чат 2</span> : <span>2</span>}
             </li>
-            {/* Можно добавить дополнительные пункты меню */}
           </ul>
         </nav>
       </aside>
-
-      {/* Основной контент страницы */}
       <main className="flex-1">
         {children}
       </main>

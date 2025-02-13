@@ -1,4 +1,6 @@
-import { LoginForm } from "../../components/ui/login-form"
+'use client'
+
+import { LoginForm } from '@/components/ui/login-form';
 import { Suspense  } from 'react';
 
 import { Marcellus_SC } from 'next/font/google';

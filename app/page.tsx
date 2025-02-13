@@ -20,9 +20,9 @@ const marcellus = Marcellus_SC({
 export default function Home() {
   ShowContent();
   return (
-    <main className="flex flex-col min-h-screen md:max-w-full" >
+    <main className="flex flex-col min-h-screen w-full overflow-x-hidden" >
       <Navbar/>
-      <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 md:w-152">
+      <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white md:h-152 w-full">
             <div className="text-center mb-[5%] lg:h-48 sm:w-full fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
               <p className="text-[5vw] md:text-[4rem]">
                 <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
