@@ -57,7 +57,7 @@ export function LoginForm({
                 </div>
                 <div className="grid gap-6">
                   <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Email (doesn't work at the moment)</Label>
                     <Input
                       id="email"
                       type="email"
@@ -65,7 +65,7 @@ export function LoginForm({
                       required
                     />
                   </div>
-                  <div className="grid gap-2">
+                  {/* <div className="grid gap-2">
                     <div className="flex items-center">
                       <Label htmlFor="password">Password</Label>
                       <Link
@@ -76,17 +76,17 @@ export function LoginForm({
                       </Link>
                     </div>
                     <Input id="password" type="password" required />
-                  </div>
+                  </div> */}
                   <Button type="submit" className="w-full">
                     Login
                   </Button>
                 </div>
-                <div className="text-center text-sm">
+                {/* <div className="text-center text-sm">
                   Don&apos;t have an account?{" "}
                   <Link href="/login/signup" className="underline underline-offset-4">
                     Sign up
                   </Link>
-                </div>
+                </div> */}
               </div>
             </form>
           </CardContent>
