@@ -33,38 +33,41 @@ export default function InputField() {
 
     const handleGenerate = async () => {
         if (keywords.length === 0) {
-            alert("Добавьте хотя бы одно ключевое слово для генерации текста.");
-            return;
+          alert("Добавьте ключевые слова");
+          return;
         }
-
+      
         setLoading(true);
-
+      
         try {
-            const response = await fetch("http://localhost:8000/generator", {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ question: keywords.join(" ") }), 
-            });
-
-            if (!response.ok) {
-                const error = await response.text();
-                console.error("Ошибка от сервера:", error);
-                alert(`Ошибка сервера: ${response.statusText}`);
-                return;
-            }
-
-            const data = await response.json();
-            setGeneratedText(data.answer); 
+          // Исправленный URL и тело запроса
+          const response = await fetch("http://localhost:8000/generator", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: keywords.join(" "),
+              category: "news", // Пример категории
+              max_length: 100,
+              temperature: 0.9,
+              top_k: 50,
+            }),
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+      
+          const data = await response.json();
+          setGeneratedText(data.generated_text); // Исправленное поле
         } catch (error) {
-            console.error("Ошибка отправки данных:", error);
-            alert("Произошла ошибка при отправке данных. Проверьте сервер.");
+          console.error("Ошибка:", error);
+          alert("Ошибка при генерации текста");
         } finally {
-            setLoading(false);
+          setLoading(false);
         }
-    };
+      };
 
     return (
         <div className="">

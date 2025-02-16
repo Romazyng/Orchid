@@ -1,73 +1,100 @@
-import os
-import pandas as pd
-import numpy as np
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
+import torch
+import logging
 from pydantic import BaseModel
+from typing import Optional
+import time
+from functools import lru_cache
 
-# Загрузка модели и токенизатора
-model_path = 'model.h5'
-tokenizer_path = 'tokenizer.json'
+# Настройка логирования
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-if os.path.exists(model_path):
-    model = keras.models.load_model(model_path)
-    tokenizer = keras.preprocessing.text.tokenizer_from_json(open(tokenizer_path).read())
-    max_sequence_length = 30  # Укажите максимальную длину последовательности, используемую при обучении
-else:
-    raise RuntimeError("Модель не найдена!")
-
-# Определение FastAPI приложения
+# Инициализация FastAPI
 app = FastAPI()
 
-# Добавление CORS middleware
+# Настройка CORS (если фронтенд на другом домене)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Замените "*" на список разрешенных доменов для безопасности
-    allow_credentials=True,
+    allow_origins=["*"],  # Разрешить все домены (настройте для продакшена)
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Определение модели запроса
-class QuestionRequest(BaseModel):
-    question: str
+# Загрузка модели и токенизатора
+tokenizer = GPT2Tokenizer.from_pretrained('sberbank-ai/rugpt3small_based_on_gpt2')
+model = GPT2LMHeadModel.from_pretrained('sberbank-ai/rugpt3small_based_on_gpt2')
+model.load_state_dict(torch.load('gpt2_news_generator_epoch_10.pt'))
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = model.to(device)
+model.eval()
 
-# Генерация ответа
-def generate_answer(model, tokenizer, question, max_sequence_length, num_words=50, temperature=0.3, top_k=5):
-    token_list = tokenizer.texts_to_sequences([question])[0]
-    token_list = pad_sequences([token_list], maxlen=max_sequence_length - 1, padding='pre')
 
-    output_text = []
-    unique_words = set()
+# Модель для валидации ввода
+class GenerateRequest(BaseModel):
+    prompt: str
+    category: str
+    max_length: Optional[int] = 100
+    temperature: Optional[float] = 0.9
+    top_k: Optional[int] = 50
 
-    for _ in range(num_words):
-        predicted = model.predict(token_list, verbose=0)[0]
-        predicted = np.log(predicted) / temperature  # Применяем температуру
-        exp_predicted = np.exp(predicted)
-        predicted /= np.sum(exp_predicted)  # Нормализация
-        predicted_words_indices = np.argsort(predicted)[-top_k:]  # Получаем индексы top_k слов
 
-        # Случайный выбор из top_k
-        chosen_word_index = np.random.choice(predicted_words_indices, p=predicted[predicted_words_indices]/np.sum(predicted[predicted_words_indices]))
-        output_word = tokenizer.index_word[chosen_word_index]
+# Кэширование результатов генерации
+@lru_cache(maxsize=500)
+def generate_text_cached(prompt: str, category: str, max_length: int, temperature: float, top_k: int) -> str:
+    prompt_with_category = f"{category}: {prompt}"
+    input_ids = tokenizer.encode(prompt_with_category, return_tensors='pt').to(device)
 
-        if output_word and output_word not in unique_words:
-            output_text.append(output_word)
-            unique_words.add(output_word)
+    with torch.no_grad():
+        output = model.generate(
+            input_ids,
+            max_length=max_length,
+            temperature=temperature,
+            top_k=top_k,
+            do_sample=True,
+            pad_token_id=tokenizer.eos_token_id
+        )
 
-        token_list = pad_sequences([token_list[0].tolist() + [chosen_word_index]], maxlen=max_sequence_length - 1, padding='pre')
+    generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    return generated_text
 
-        if output_word in ['.', '!', '?']:
-            break
 
-    return ' '.join(output_text)
-
-# Определение маршрута для получения ответа
+# Маршрут для генерации текста
 @app.post("/generator")
-async def get_answer(request: QuestionRequest):
-    answer = generate_answer(model, tokenizer, request.question, max_sequence_length)
-    return {"answer": answer}
+async def generate(request: GenerateRequest):
+    start_time = time.time()
+
+    # Валидация ввода
+    if not request.prompt or not request.category:
+        logger.error("Пользователь не указал промпт или категорию")
+        raise HTTPException(status_code=400, detail="Пожалуйста, укажите промпт и категорию")
+
+    if len(request.prompt) > 500:
+        logger.error("Промпт слишком длинный")
+        raise HTTPException(status_code=400, detail="Промпт не должен превышать 500 символов")
+
+    # Генерация текста
+    try:
+        generated_text = generate_text_cached(
+            request.prompt, request.category, request.max_length, request.temperature, request.top_k
+        )
+        logger.info(f"Успешная генерация текста для категории: {request.category}")
+    except Exception as e:
+        logger.error(f"Ошибка при генерации текста: {e}")
+        raise HTTPException(status_code=500, detail="Ошибка при генерации текста")
+
+    # Логирование времени выполнения
+    execution_time = time.time() - start_time
+    logger.info(f"Время генерации: {execution_time:.2f} секунд")
+
+    return JSONResponse(content={"generated_text": generated_text})
+
+
+# Запуск сервера
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
