@@ -49,6 +49,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { cookies } from "next/headers";
 
 import { createClient } from '@/utils/supabase/server'
 
@@ -90,4 +91,10 @@ export async function signup(formData: FormData) {
 
   revalidatePath('/', 'layout')
   redirect('/login')
+}
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+  redirect('/login');
 }
