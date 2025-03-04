@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import ShowContent from "../../utils/ShowContent";
+import ShowContent from "../../ShowContent";
 
 export default function WhyUs() {
   ShowContent()

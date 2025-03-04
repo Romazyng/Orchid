@@ -48,7 +48,7 @@ export default function InputField() {
             },
             body: JSON.stringify({
               prompt: keywords.join(" "),
-              category: "news", // Пример категории
+              category: "world", // Пример категории
               max_length: 100,
               temperature: 0.9,
               top_k: 50,

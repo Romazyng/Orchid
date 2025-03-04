@@ -18,9 +18,9 @@ const scrollToSection = () => {
 
 export default function Navbar() {
     return (
-        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 w-[325px] h-[55px] bg-[#454040]/90 text-white rounded-[36px] z-10">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[21rem] lg:h-[3.45rem] bg-[#181717]/90 text-white rounded-[36px] z-10">
             <div className="container mx-auto flex justify-between items-center">
-              <div className="bg-[#3A3737]/80 rounded-[36px] w-[106px] h-[55px] flex items-center justify-center">
+              <div className="bg-[#0b0b0b]/80 rounded-[36px] lg:w-[6.9rem] lg:h-[3.40rem]  flex items-center justify-center">
                 <Link href="/" className={`${marcellus.className} antialiased text-2xl`}>
                   Orchid
                 </Link>
@@ -31,8 +31,8 @@ export default function Navbar() {
                     Contact us
                   </a>
                 </li>
-                <li className="bg-[#CCD0CF]/80 rounded-[36px] w-[106px] h-[55px] flex items-center justify-center text-black">
-                  <Link href="/login/signin" className="text-center">
+                <li className="bg-[#ffffff]/90 rounded-[36px] lg:w-[7.1rem] lg:h-[3.5rem] flex items-center justify-center text-black">
+                  <Link href="/login" className="text-center">
                     Sign in
                   </Link>
                 </li>

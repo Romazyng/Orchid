@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { signup } from "@/app/login/actions"
 import {
   Card,
   CardContent,
@@ -68,7 +69,7 @@ export function RegistrationForm({
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button formAction={signup} className="w-full">
                 Register
               </Button>
             </div>
