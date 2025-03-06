@@ -211,8 +211,8 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="p-6 rounded-[13px] col-span-1 w-[30rem] h-[14rem] flex justify-start items-end ml-12">
-              <div>
+            <div className="p-6 rounded-[13px] col-span-1 w-[30rem] h-[14rem] flex justify-start items-end ml-12 ">
+              <div className="">
                   <h3 className="text-[1.2rem] font-medium text-black mb-2">Contextual Analysis</h3>
                   <p className="text-[0.8rem] font-medium text-[#747272]">
                   Next, our platform analyzes your keywords using advanced AI. 
@@ -221,7 +221,7 @@ export default function Home() {
                   </p>
                 </div>
             </div>
-            <div className="p-6 rounded-[13px] col-span-1 w-[28rem] h-[18rem] flex justify-start items-end">
+            <div className="p-6 rounded-[13px] col-span-1 w-[28rem] h-[18rem] flex justify-start items-end ">
               <div>
                 <h3 className="text-[1.2rem] font-medium text-black mb-2">Content Generation</h3>
                 <p className="text-[0.8rem] font-medium text-[#747272]">

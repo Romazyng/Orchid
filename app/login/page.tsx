@@ -1,3 +1,6 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,24 +12,12 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { emailLogin, signup } from "./actions";
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
-// import { OAuthButtons } from "./oauth-signin";
+import { OAuthButtons } from "./oauth-signin";
+import Link from 'next/link';
 
-export default async function Login({
-  searchParams,
-}: {
-  searchParams: { message: string };
-}) {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user) {
-    return redirect("/generator");
-  }
+export default function Login() {
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
 
   return (
     <section className="h-[calc(100vh-57px)] flex justify-center items-center">
@@ -61,20 +52,20 @@ export default async function Login({
                 required
               />
             </div>
-            {searchParams.message && (
-              <div className="text-sm font-medium text-destructive">
-                {searchParams.message}
-              </div>
+            {message && (
+              <div className="text-sm font-medium text-red-500">{message}</div>
             )}
             <Button formAction={emailLogin} className="w-full">
               Login
             </Button>
           </form>
-          {/* <OAuthButtons /> */}
+          <OAuthButtons />
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
-            <button formAction={signup} form="login-form" className="underline">
-              Sign up
+            <button form="login-form" className="underline">
+              <Link href="/login/signup">
+                Sign up
+              </Link>
             </button>
           </div>
         </CardContent>
