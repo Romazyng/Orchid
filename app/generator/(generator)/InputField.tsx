@@ -40,7 +40,6 @@ export default function InputField() {
         setLoading(true);
       
         try {
-          // Исправленный URL и тело запроса
           const response = await fetch("http://localhost:8000/generator", {
             method: "POST",
             headers: {
@@ -48,7 +47,7 @@ export default function InputField() {
             },
             body: JSON.stringify({
               prompt: keywords.join(" "),
-              category: "world", // Пример категории
+              category: "world", // Пример категории  
               max_length: 100,
               temperature: 0.9,
               top_k: 50,
@@ -60,7 +59,7 @@ export default function InputField() {
           }
       
           const data = await response.json();
-          setGeneratedText(data.generated_text); // Исправленное поле
+          setGeneratedText(data.generated_text); 
         } catch (error) {
           console.error("Ошибка:", error);
           alert("Ошибка при генерации текста");
@@ -75,7 +74,7 @@ export default function InputField() {
                 id="word"
                 type="text"
                 placeholder="Введите ключевое слово"
-                className="bg-[#A19E9E] p-4 text-xl w-[473px] text-white focus:outline-none rounded-[10px] focus:border-blue-500 placeholder-gray-500 mb-4"
+                className="bg-[#EDE2D6] p-4 text-xl w-[473px] text-white focus:outline-none rounded-[10px] focus:border-blue-500 placeholder-gray-500 mb-4"
                 value={inputValue}
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}

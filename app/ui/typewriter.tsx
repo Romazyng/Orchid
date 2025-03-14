@@ -34,7 +34,7 @@ export default function Typewriter() {
 
   return (
     <motion.div 
-      className="lg:text-[2.1rem] md:text-[1.9rem] sm:text-[1.6rem] font-medium text-white mb-4"
+      className="lg:text-[2.1rem] md:text-[1.9rem] sm:text-[1.6rem] font-medium text-[#1E1E26] mb-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

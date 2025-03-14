@@ -21,10 +21,10 @@ export default async function Generate() {
     }
 
     return (
-        <section className="h-screen flex items-center justify-center bg-black">
+        <section className="h-screen flex items-center justify-center bg-[#F6ECE1]">
             <GeneratorLayout/>
             <div className="text-center ">
-                <div className="lg:text-[2.5rem] md:text-[2.2rem] sm:text-[1.9rem] font-medium text-white mb-4 ">
+                <div className="lg:text-[2.5rem] md:text-[2.2rem] sm:text-[1.9rem] font-medium text-[#1E1E26] mb-4 ">
                     <div className=" w-fit absolute top-0 right-0 m-4 rounded-full shadow-lg">
                     </div>
                     <p>WHATS ON YOUR MIND TODAY?</p>
@@ -35,8 +35,8 @@ export default async function Generate() {
                 <div className="absolute top-4 sm:top-4 sm:right-4 md:top-6 md:right-6">
                     {user !== null ? (
                         <form action={signOut} className="flex items-center gap-2">
-                            <p className="text-white">{user.email}</p>
-                            <Button>
+                            <p className="text-[#1E1E26]">{user.email}</p>
+                            <Button className="bg-[#EDE2D6] text-[#1E1E26] hover:bg-[#F6ECE1]">
                                 Sign out
                             </Button>
                         </form>
