@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/server";
 import { signOut } from "../login/actions";
 import { redirect } from "next/navigation";
+import UserProfile from "../ui/components/UserProfile";
 
 export default async function Generate() {
 
@@ -35,7 +36,14 @@ export default async function Generate() {
                 <div className="absolute top-4 sm:top-4 sm:right-4 md:top-6 md:right-6">
                     {user !== null ? (
                         <form action={signOut} className="flex items-center gap-2">
-                            <p className="text-[#1E1E26]">{user.email}</p>
+                            {user && <UserProfile user={user} />}
+                            {/* <Image
+                                height={150}
+                                width={150}
+                                alt="user avatar"
+                                src={user?.user_metadata?.avatar_url}
+                            /> */}
+                            <p className="text-[#1E1E26]">{user.email} </p>
                             <Button className="bg-[#EDE2D6] text-[#1E1E26] hover:bg-[#F6ECE1]">
                                 Sign out
                             </Button>
