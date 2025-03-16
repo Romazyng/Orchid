@@ -10,6 +10,7 @@ import { createClient } from "@/utils/supabase/server";
 import { signOut } from "../login/actions";
 import { redirect } from "next/navigation";
 import UserProfile from "../ui/components/UserProfile";
+import GeneratorNavbar from "../ui/components/GeneratorNavbar";
 
 export default async function Generate() {
 
@@ -23,6 +24,7 @@ export default async function Generate() {
 
     return (
         <section className="h-screen flex items-center justify-center bg-[#F6ECE1]">
+            <GeneratorNavbar/>
             <GeneratorLayout/>
             <div className="text-center ">
                 <div className="lg:text-[2.5rem] md:text-[2.2rem] sm:text-[1.9rem] font-medium text-[#1E1E26] mb-4 ">
