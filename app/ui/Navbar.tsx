@@ -26,7 +26,7 @@ export default function Navbar() {
                 </Link>
               </div>
               <ul className=" flex items-center"> 
-                <li className="rounded-[36px] lg:w-[6.9rem] lg:h-[3rem] mt-1 flex items-center justify-center text-white hover:bg-[#313131] duration-500 font-semibold">
+                <li className="rounded-[36px] lg:w-[6.9rem] lg:h-[3rem] mt-1 flex items-center justify-center text-white cursor-pointer hover:bg-[#313131] duration-500 font-semibold">
                   <a onClick={scrollToSection} className="text-center cursor-pointer">
                     Contact us
                   </a>

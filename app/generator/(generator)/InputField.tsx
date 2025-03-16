@@ -80,7 +80,7 @@ export default function InputField() {
                 onKeyDown={handleKeyPress}
             />
             <div className="flex items-center justify-center">
-            <div className="flex gap-2  mb-4 w-max">
+            <div className="flex gap-2 mb-4 w-max">
                 {keywords.map((keyword, index) => (
                     <div
                         key={index}

@@ -14,14 +14,6 @@ import GeneratorNavbar from "../ui/components/GeneratorNavbar";
 
 export default async function Generate() {
 
-    const supabase = await createClient()
-
-    const { data: {user}} = await supabase.auth.getUser()
-
-    if(!user) {
-        return redirect('/login')
-    }
-
     return (
         <section className="h-screen flex items-center justify-center bg-[#F6ECE1]">
             <GeneratorNavbar/>
@@ -36,25 +28,6 @@ export default async function Generate() {
                 <InputField/>
                 </div>
                 <div className="absolute top-4 sm:top-4 sm:right-4 md:top-6 md:right-6">
-                    {user !== null ? (
-                        <form action={signOut} className="flex items-center gap-2">
-                            {user && <UserProfile user={user} />}
-                            {/* <Image
-                                height={150}
-                                width={150}
-                                alt="user avatar"
-                                src={user?.user_metadata?.avatar_url}
-                            /> */}
-                            <p className="text-[#1E1E26]">{user.email} </p>
-                            <Button className="bg-[#EDE2D6] text-[#1E1E26] hover:bg-[#F6ECE1]">
-                                Sign out
-                            </Button>
-                        </form>
-                    ) : (
-                        <Button asChild>
-                            <Link href='/login'>Sign in</Link>
-                        </Button>
-                    )}
                 </div>
         </section>
     );

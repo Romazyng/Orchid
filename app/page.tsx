@@ -127,7 +127,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className=" min-h-screen">
+      <section className=" min-h-[110vh] ">
         <div className="flex justify-around px-[21rem] fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
           <Image
             src='/Chelka_Ch_Chb.png'
@@ -199,7 +199,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex justify-between items-center">
+      <section className="flex justify-between items-center mt-16">
         <div className="px-[21rem] py-8 mt-32">
           <h2 className="text-center font-semibold text-[2.5rem]">How it works?</h2>
           <div className="grid grid-cols-2 gap-4 mt-16">
