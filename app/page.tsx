@@ -25,15 +25,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white">
         <div className="text-center mb-8 lg:mb-16 fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
-          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[3vw] font-bold">
+          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[3vw] font-medium">
             <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
           </p>
-          <h1 className="text-[#747272] text-lg sm:text-xl md:text-2xl lg:text-[1.5vw] mt-4">
+          <h1 className="text-[#747272] text-lg sm:text-xl md:text-2xl lg:text-[1.5vw] mt-4 font-normal">
             based on your preferences.
           </h1>
         </div>
         <div className="absolute bottom-8 flex justify-center items-end">
-          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 animate-bounce">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 animate-bounce">
             <svg
               width="100%"
               height="100%"
@@ -71,7 +71,7 @@ export default function Home() {
       </div>
 
       {/* Idea Section */}
-      <section className="flex flex-col items-center mt-20 h-95 text-black fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
+      <section className="flex flex-col items-center mt-20 mb-20 h-95 text-black fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
         <div className="text-[5vw] md:text-[3rem] font-medium text-center">
           <span>
             Our job is to help you find that<br /> <i className="font-light">idea</i> and make it legendary
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* Unleash Potential Section */}
-      <section className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mt-8 md:mt-36 px-4 md:space-x-[9rem]">
+      <section className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mt-8 md:mt-36 px-4 md:space-x-[9rem] ">
         <div className="w-full md:w-1/3 max-w-sm rounded-lg overflow-hidden">
           <p className="mt-6 ml-6 text-xl font-semibold text-black">
             Unleash your potential
@@ -92,6 +92,18 @@ export default function Home() {
             height={257}
             className="object-cover mt-4"
           />
+        </div>
+        <div className="font-bold w-24 h-24 md:block hidden">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" strokeWidth="0">
+          </g>
+          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round">
+            </g>
+            <g id="SVGRepo_iconCarrier"> 
+              <path fillRule="evenodd" clipRule="evenodd" d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z" fill="#000000">
+                </path> 
+                </g>
+              </svg>
         </div>
         <div className="w-full md:w-1/3 max-w-sm rounded-lg overflow-hidden relative">
           <div className="absolute top-6 left-6">
@@ -136,9 +148,9 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-2 space-y-4 text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-bold">Roman Chernetsky</h3>
-            <p className="text-xl md:text-xl text-[#0099FF] font-normal">CEO, Frontend</p>
-            <p className="text-lg md:text-xl text-[#747272]">
+            <h3 className="text-xl md:text-2xl font-medium">Roman Chernetsky</h3>
+            <p className="text-lg md:text-lg text-[#0099FF] font-normal">CEO, Frontend</p>
+            <p className="text-lg md:text-lg text-[#747272] font-normal">
             I believe that success comes from bold ideas, relentless determination, and the courage to challenge the status quo. Every challenge is an opportunity to grow, 
             and every setback a lesson to move forward stronger. My mission is to inspire my team to dream bigger, push boundaries, and never settle for less than excellence. 
             Together, we have the power to turn vision into reality, to innovate fearlessly, 
@@ -167,9 +179,9 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-1 space-y-4 text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-bold">Nikita Gryaznov</h3>
-            <p className="text-xl md:text-xl text-[#0099FF] font-normal">Co-Founder, Backend</p>
-            <p className="text-lg md:text-xl text-[#747272]">
+            <h3 className="text-xl md:text-2xl font-medium">Nikita Gryaznov</h3>
+            <p className="text-lg md:text-lg text-[#0099FF] font-normal">Co-Founder, Backend</p>
+            <p className="text-lg md:text-lg text-[#747272] font-normal">
             I want to remind you that our work is the backbone of innovation. 
             Each line of code holds the potential to change the game. Embrace challenges as
             opportunities to learn and grow. Dont fear failure; let it guide you to better solutions. 
@@ -197,9 +209,9 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-2 space-y-4 text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-bold">Klim Popov</h3>
-            <p className="text-xl md:text-xl text-[#0099FF] font-normal">Co-Founder, AI</p>
-            <p className="text-lg md:text-xl text-[#747272]">
+            <h3 className="text-xl md:text-2xl font-medium">Klim Popov</h3>
+            <p className="text-lg md:text-lg text-[#0099FF] font-normal">Co-Founder, AI</p>
+            <p className="text-lg md:text-lg text-[#747272] font-normal">
             Through the journey, my passion for AI has driven me to push the limits of whats possible. 
               I believe we have the power to transform lives and shape a better world together. 
               Lets continue to dream big and create the future we envision!
