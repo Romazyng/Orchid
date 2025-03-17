@@ -228,14 +228,14 @@ export default function Home() {
         <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-semibold">
           How it works?
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-16 ">
-          <div className="bg-black text-white p-6 rounded-lg min-h-64">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-14 md:mt-16 ">
+          <div className="bg-black text-white p-6 rounded-lg min-h-64 md:ml-40">
             <h3 className="text-xl md:text-2xl font-medium mb-4">Gathering Your Ideas</h3>
             <p className="text-sm md:text-base text-[#747272]">
             We start by understanding your vision. You provide key concepts, themes, and keywords that define your goals. These inputs are stored locally, forming the foundation of the content creation process.
             </p>
           </div>
-          <div className="p-6 rounded-lg min-h-64">
+          <div className="p-6 rounded-lg min-h-64 md:mr-40">
             <h3 className="text-xl md:text-2xl font-medium mb-4">Contextual Analysis</h3>
             <p className="text-sm md:text-base text-[#747272]">
             Next, our platform analyzes your keywords using advanced AI. 
@@ -243,13 +243,13 @@ export default function Home() {
                   the content aligns perfectly with your intended message and purpose.
             </p>
           </div>
-          <div className="p-6 rounded-lg min-h-64">
+          <div className=" p-6 rounded-lg min-h-64 md:ml-40">
             <h3 className="text-xl md:text-2xl font-medium mb-4 ">Content Generation</h3>
             <p className="text-sm md:text-base text-[#747272]">
             Our AI then generates high-quality, tailored text based on your input. The content is crafted to match your needs, whether its creative, formal, or something in between.
             </p>
           </div>
-          <div className="bg-black text-white p-6 rounded-lg min-h-64">
+          <div className="bg-black text-white p-6 rounded-lg min-h-64 md:mr-40">
             <h3 className="text-xl md:text-2xl font-medium mb-4">Review and Refine</h3>
             <p className="text-sm md:text-base text-[#747272]">
             Finally, you can review the generated content and make any adjustments if needed. Our platform gives you the flexibility to refine the text until it meets your exact expectations.
