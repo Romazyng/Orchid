@@ -96,12 +96,11 @@ export default function InputField() {
                     </div>
                 ))}
             </div>
-
             </div>
             <button
                 onClick={handleGenerate}
                 className={`px-6 py-2 rounded-[10px] focus:outline-none ${
-                    loading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600 text-white"
+                    loading ? "bg-gray-400" : "bg-[#EDE2D6] hover:bg-[#cdc3ba] text-black"
                 }`}
                 disabled={loading}
             >

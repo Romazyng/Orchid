@@ -2,7 +2,7 @@
 
 import { Provider } from "@supabase/supabase-js"
 import { JSX } from "react"
-import {Github } from 'lucide-react'
+import {Github, Chrome } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { oAuthSignIn } from "./actions"
 
@@ -20,6 +20,11 @@ export function OAuthButtons() {
             displayName: 'GitHub',
             icon: <Github className='size-5' />,
         },
+        {
+            name: 'google',
+            displayName: 'Google',
+            icon: <Chrome className='size-5' />,
+        }
     ];
 
     return (

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Marcellus_SC } from 'next/font/google';
-import UserProfile from './UserProfile';
+import UserProfile from '../../generator/UserProfile';
 import { signOut } from '@/app/login/actions';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
@@ -57,7 +57,9 @@ export default async function GeneratorNavbar() {
             <div className="flex items-center ml-auto mr-4 mt-1">
                 {user && (
                   <form action={signOut} className="flex items-center">
+                    <button>
                     <UserProfile user={user} /> 
+                    </button>
                   </form>
                 )}
               </div>
