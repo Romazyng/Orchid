@@ -37,6 +37,7 @@ export function RegistrationForm({
                 <Label htmlFor="name">Full Name</Label>
                 <Input
                   id="name"
+                  name="name"
                   type="text"
                   placeholder="John Doe"
                   required
@@ -46,7 +47,8 @@ export function RegistrationForm({
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
-                  type="email"
+                  name="email"
+                  type="text"
                   placeholder="m@example.com"
                   required
                 />
@@ -55,6 +57,7 @@ export function RegistrationForm({
                 <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   placeholder="••••••••"
                   required
@@ -69,7 +72,7 @@ export function RegistrationForm({
                   required
                 />
               </div>
-              <Button formAction={signup} className="w-full">
+              <Button formAction={signup} type="submit" className="w-full">
                 Register
               </Button>
             </div>
