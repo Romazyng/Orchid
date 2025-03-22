@@ -47,7 +47,7 @@ export default function WhyUs() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-[5.5vw] sm:text-[4vw] md:text-[3vw] lg:text-[3rem] font-medium text-[#747272] text-center"
+          className="text-[4vw] sm:text-[3vw] md:text-[2vw] lg:text-[2.8rem] font-medium text-[#747272] text-center"
         >
           You want to turn your ideas into reality
         </motion.p>
@@ -72,7 +72,7 @@ export default function WhyUs() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
-        className="text-[#747272] text-[3.5vw] sm:text-[2.5vw] md:text-[1.8vw] lg:text-[1.6rem] font-normal flex flex-col sm:flex-row justify-center gap-6 md:gap-9 px-4 mt-16"
+        className="text-[#747272] text-[3.5vw] sm:text-[2.5vw] md:text-[1.8vw] lg:text-[1.6rem] font-normal flex flex-col sm:flex-row justify-center gap-6 md:gap-9 px-14 mt-16"
       >
         <p className="max-w-md text-center sm:text-center">
           We know the feeling of being unable to create something new, something

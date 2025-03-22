@@ -31,7 +31,7 @@ export function OAuthButtons() {
         <>
             {oAuthProviders.map((provider) => (
                 <Button 
-                    key={provider.name} // Добавили key
+                    key={provider.name} 
                     className="flex items-center justify-center gap-2" 
                     variant='outline'
                     onClick={async () => {

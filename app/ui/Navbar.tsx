@@ -18,9 +18,9 @@ const scrollToSection = () => {
 
 export default function Navbar() {
     return (
-        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 md:w-[24rem] sm:w-[25rem] h-[3rem] sm:h-[3.5rem] bg-[#181717]/90 text-white rounded-[36px] z-10 backdrop-blur-sm">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 md:w-[25rem] sm:w-[25rem] h-[3.5rem] bg-[#181717]/90 text-white rounded-[36px] z-10 backdrop-blur-sm">
             <div className="container mx-auto flex justify-between items-center">
-              <div className="bg-[#0b0b0b]/20 rounded-[36px] w-[6rem] sm:w-[6.9rem] h-[2.5rem] sm:h-[3rem] ml-1 mt-1 flex items-center justify-center">
+              <div className="bg-[#0b0b0b]/20 rounded-[36px] w-[6rem] sm:w-[6.9rem] h-[3rem] sm:h-[3rem] ml-1 mt-1 flex items-center justify-center">
                 <Link href="/" className={`${marcellus.className} antialiased text-xl sm:text-2xl`}>
                   Orchid
                 </Link>
@@ -30,7 +30,7 @@ export default function Navbar() {
                     Contact us
                   </a>
                 </div>
-                <div className="bg-[#ffffff]/90 rounded-[36px] w-[8.5rem] sm:w-[10.5rem] h-[2.5rem] sm:h-[3rem] mt-1 mr-1 flex items-center justify-center text-black font-semibold cursor-pointer">
+                <div className="bg-[#ffffff]/90 rounded-[36px] w-[8.5rem] sm:w-[10.5rem] h-[3rem] sm:h-[3rem] mt-1 mr-1 flex items-center justify-center text-black font-semibold cursor-pointer">
                   <Link href="/login" className="text-center">
                     Sign in
                   </Link>
