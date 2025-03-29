@@ -6,7 +6,7 @@ import Blocks from "./ui/Blocks";
 import FAQSection from "./ui/FAQ";
 import Reviews from "./ui/Reviews";
 import ShowContent from "./ShowContent";
-import { motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Marcellus_SC } from 'next/font/google';
 import Navbar from "./ui/Navbar";

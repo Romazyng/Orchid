@@ -37,7 +37,7 @@ model.eval()
 class GenerateRequest(BaseModel):
     prompt: str
     category: str
-    max_length: Optional[int] = 100
+    max_length: Optional[int] = 500
     temperature: Optional[float] = 0.9
     top_k: Optional[int] = 50
 

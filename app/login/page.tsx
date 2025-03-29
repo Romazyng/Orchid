@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { emailLogin, signup } from "./actions";
+import { emailLogin } from "./actions";
 import { OAuthButtons } from "./oauth-signin";
 import Link from 'next/link';
 

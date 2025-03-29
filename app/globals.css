@@ -18,9 +18,8 @@
   .group {
     display: flex;
     gap: 70px;
-    /* Add padding to the right to create a gap between the last and first card. */
     padding-right: 70px;
-    will-change: transform; /* We should be nice to the browser - let it know what we're going to animate. */
+    will-change: transform; 
     animation: scrolling 15s linear infinite;
   }
 
@@ -33,6 +32,24 @@
     }
   }
   
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #EDE2D6; 
+  border-radius: 10px; 
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px; 
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
   .card {
     width: 260px;
