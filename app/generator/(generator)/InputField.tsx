@@ -45,15 +45,14 @@ export default function InputField({ onGenerate }: InputFieldProps) {
     setLoading(true);
   
     try {
+      // Отправляем запрос на генерацию текста
       const response = await fetch("http://localhost:8000/generator", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: keywords.join(" "),
-          category: "world", 
-          max_length: 500,
+          category: "world",
+          max_length: 100,
           temperature: 0.9,
           top_k: 50,
         }),
@@ -65,10 +64,20 @@ export default function InputField({ onGenerate }: InputFieldProps) {
   
       const data = await response.json();
       setGeneratedText(data.generated_text);
-
-      onGenerate();
   
-      setIsGenerated(true);
+      // 🔹 Сохраняем чат в Supabase
+      const supabaseResponse = await fetch("/api/save-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [{ role: "user", text: keywords.join(" ") }, { role: "bot", text: data.generated_text }],
+        }),
+      });
+  
+      if (!supabaseResponse.ok) {
+        throw new Error("Ошибка при сохранении чата в Supabase");
+      }
+      
     } catch (error) {
       console.error("Ошибка:", error);
       alert("Ошибка при генерации текста");
@@ -76,6 +85,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
       setLoading(false);
     }
   };
+  
 
   return (
     <div

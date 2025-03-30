@@ -20,7 +20,7 @@ const marcellus = Marcellus_SC({
 export default function Home() {
   ShowContent();
   return (
-    <main className="flex flex-col min-h-screen w-full overflow-x-hidden">
+    <main className="flex flex-col min-h-screen w-full overflow-x-hidden overflow-y-auto scrollbar">
       <Navbar />
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white">
