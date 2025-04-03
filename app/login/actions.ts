@@ -54,7 +54,6 @@ import { createClient } from '@/utils/supabase/server'
 import { Provider } from '@supabase/supabase-js';
 import { getURL } from '@/utils/helpers';
 
-// Вход через email и пароль
 export async function emailLogin(formData: FormData) {
   const supabase = await createClient()
 
@@ -76,7 +75,6 @@ export async function emailLogin(formData: FormData) {
   redirect('/generator')
 }
 
-// Регистрация
 export async function signup(formData: FormData) {
   const supabase = await createClient()
 
@@ -88,7 +86,7 @@ export async function signup(formData: FormData) {
     email,
     password,
     options: {
-      data: { name }  // Добавляем метаданные с именем пользователя
+      data: { name } 
     }
   });
   console.log('SIGNUP DATA:', { email, password, name })
@@ -98,18 +96,16 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/login')
+  redirect('/login?showNotification=true');
 }
 
 
-// Выход из аккаунта
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect('/login');
 }
 
-// Вход через OAuth (GitHub, Google и т.п.)
 export async function oAuthSignIn(provider: Provider) {
   if (!provider) {
     return redirect('/login?message=No provider selected')

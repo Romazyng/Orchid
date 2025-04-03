@@ -33,8 +33,6 @@ interface GeneratorNavbarProps {
 }
 
 export default function GeneratorNavbar({ user }: GeneratorNavbarProps) {
-  // Для примера используем статический массив чатов.
-  // В реальном проекте эти данные можно получить через API.
   const chats = [
     { id: 'chat-1', name: 'Чат 1' },
     { id: 'chat-2', name: 'Чат 2' },
@@ -48,10 +46,9 @@ export default function GeneratorNavbar({ user }: GeneratorNavbarProps) {
           <Link href="/" className={`${marcellus.className} antialiased text-3xl text-black`}>
             Orchid
           </Link>
-          <NewChatButton/>
+          {/* <NewChatButton/> */}
         </div>
         <div className="flex-1 flex items-center justify-center">
-          {/* Здесь можно оставить другие элементы, например, кнопки навигации */}
         </div>
         <div className="flex items-center ml-auto mr-4 mt-1">
           {user && (

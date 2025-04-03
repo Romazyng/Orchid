@@ -5,6 +5,7 @@ import GeneratorNavbar from "@/app/ui/components/GeneratorNavbar";
 
 interface InputFieldProps {
   onGenerate: () => void;
+  
 }
 
 export default function InputField({ onGenerate }: InputFieldProps) {
@@ -52,7 +53,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
         body: JSON.stringify({
           prompt: keywords.join(" "),
           category: "world",
-          max_length: 100,
+          max_length: 500,
           temperature: 0.9,
           top_k: 50,
         }),
@@ -115,7 +116,12 @@ export default function InputField({ onGenerate }: InputFieldProps) {
         onClick={handleGenerate}
         className=' focus:outline-none' 
       >
-        <img width="40" height="40" src="https://img.icons8.com/ios-glyphs/40/send-letter.png" alt="send-letter"/>
+        {loading ? (
+          <div className="w-10 h-10 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+        ) : (
+          <img width="40" height="40" src="https://img.icons8.com/ios-glyphs/40/send-letter.png" alt="send-letter"/> 
+        )
+      }
       </button>
       </div>
       

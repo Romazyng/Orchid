@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,19 +14,35 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { emailLogin } from "./actions";
 import { OAuthButtons } from "./oauth-signin";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Login() {
   const searchParams = useSearchParams();
-  const message = searchParams.get("message");
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("showNotification") === "true") {
+      setShowNotification(true);
+
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
+    }
+  }, [searchParams]);
 
   return (
     <section className="h-[calc(100vh-57px)] flex justify-center items-center">
+      {showNotification && (
+        <div className="notification">
+          Проверьте вашу почту для подтверждения регистрации!
+        </div>
+      )}
+
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your email and password below to login to your account
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -52,9 +69,6 @@ export default function Login() {
                 required
               />
             </div>
-            {message && (
-              <div className="text-sm font-medium text-red-500">{message}</div>
-            )}
             <Button formAction={emailLogin} className="w-full">
               Login
             </Button>
@@ -63,9 +77,7 @@ export default function Login() {
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
             <button form="login-form" className="underline">
-              <Link href="/login/signup">
-                Sign up
-              </Link>
+              <Link href="/login/signup">Sign up</Link>
             </button>
           </div>
         </CardContent>
