@@ -39,53 +39,54 @@ export default function InputField({ onGenerate }: InputFieldProps) {
 
   const handleGenerate = async () => {
     if (keywords.length === 0) {
-      alert("Добавьте ключевые слова");
-      return;
+        alert("Добавьте ключевые слова");
+        return;
     }
-  
+
     setLoading(true);
-  
+
     try {
-      // Отправляем запрос на генерацию текста
-      const response = await fetch("http://localhost:8000/generator", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: keywords.join(" "),
-          category: "world",
-          max_length: 500,
-          temperature: 0.9,
-          top_k: 50,
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      setGeneratedText(data.generated_text);
-  
-      // 🔹 Сохраняем чат в Supabase
-      const supabaseResponse = await fetch("/api/save-chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [{ role: "user", text: keywords.join(" ") }, { role: "bot", text: data.generated_text }],
-        }),
-      });
-  
-      if (!supabaseResponse.ok) {
-        throw new Error("Ошибка при сохранении чата в Supabase");
-      }
-      
+        // Генерация текста
+        const response = await fetch("http://localhost:8000/generator", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                prompt: keywords.join(" "),
+                category: "world",
+                max_length: 500,
+                temperature: 0.9,
+                top_k: 50,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setGeneratedText(data.generated_text);
+
+        // Сохраняем чат в Supabase
+        const supabaseResponse = await fetch("/api/save-chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                user_input: keywords.join(", "), // Запрос пользователя
+                bot_response: data.generated_text, // Ответ бота
+            }),
+        });
+
+        if (!supabaseResponse.ok) {
+            throw new Error("Ошибка при сохранении чата в Supabase");
+        }
+
     } catch (error) {
-      console.error("Ошибка:", error);
-      alert("Ошибка при генерации текста");
+        console.error("Ошибка:", error);
+        alert("Ошибка при генерации текста или сохранении данных");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
   
 
   return (

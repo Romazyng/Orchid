@@ -3,13 +3,15 @@ import { notFound } from 'next/navigation';
 
 export default async function ChatPage({ params }: { params: { chatId: string } }) {
   const supabase = await createClient();
-  const { data: messages, error } = await supabase
-    .from('messages')
+
+  // Используем chat_id для фильтрации данных
+  const { data: chat, error } = await supabase
+    .from('chat')
     .select('*')
-    .eq('chat_id', params.chatId)
+    .eq('chat_id', params.chatId) // Используем chat_id из параметров URL
     .order('created_at', { ascending: true });
 
-  if (error || !messages) {
+  if (error || !chat || chat.length === 0) {
     notFound();
   }
 
@@ -17,9 +19,9 @@ export default async function ChatPage({ params }: { params: { chatId: string } 
     <div className="min-h-screen p-4">
       <h1 className="text-2xl font-bold mb-4">Чат</h1>
       <div className="space-y-2">
-        {messages.map((msg: any) => (
+        {chat.map((msg: any) => (
           <div key={msg.id} className="p-2 bg-gray-200 rounded">
-            <p>{msg.content}</p>
+            <p>{msg.bot_response}</p> {/* Отображаем bot_response */}
             <span className="text-xs text-gray-600">{new Date(msg.created_at).toLocaleString()}</span>
           </div>
         ))}
