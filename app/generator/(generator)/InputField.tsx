@@ -4,7 +4,7 @@ import { useState } from "react";
 import GeneratorNavbar from "@/app/ui/components/GeneratorNavbar";
 
 interface InputFieldProps {
-  onGenerate: () => void;
+  onGenerate: (text: string) => void;
   
 }
 
@@ -66,13 +66,13 @@ export default function InputField({ onGenerate }: InputFieldProps) {
         const data = await response.json();
         setGeneratedText(data.generated_text);
 
-        // Сохраняем чат в Supabase
+        // cохранение в supabase
         const supabaseResponse = await fetch("/api/save-chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                user_input: keywords.join(", "), // Запрос пользователя
-                bot_response: data.generated_text, // Ответ бота
+                user_input: keywords.join(", "), // запрос пользователя
+                bot_response: data.generated_text, // ответ бота
             }),
         });
 

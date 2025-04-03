@@ -33,7 +33,14 @@ export default function GeneratorNavbar({ user }: { user: any }) {
   const [loading, setLoading] = useState<boolean>(true);
   const supabase = createClientComponentClient();
 
-  // Загрузка начального списка чатов
+  const capitalizeWords = (str: string): string => {
+    return str
+      .split(' ') // разделяем строку по пробелам
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Делаем первую букву заглавной
+      .join(' '); // объединяем слова обратно в строку
+  };
+
+  // загрузка начального списка чатов
   useEffect(() => {
     const fetchChats = async () => {
       try {
@@ -55,14 +62,14 @@ export default function GeneratorNavbar({ user }: { user: any }) {
     fetchChats();
   }, [user]);
 
-  // Подписка на изменения в реальном времени
+  // подписка на изменения в реальном времени
   useEffect(() => {
     const channel = supabase
-      .channel('public:chat') // Название канала
+      .channel('public:chat') // название канала
       .on(
         'postgres_changes',
         {
-          event: 'INSERT', // Слушаем только INSERT
+          event: 'INSERT', // слушаем только INSERT
           schema: 'public',
           table: 'chat',
         },
@@ -72,7 +79,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
           if (payload.eventType === 'INSERT') {
             const newChat = payload.new;
   
-            // Проверяем, принадлежит ли чат текущему пользователю
+            // проверяем принадлежит ли чат текущему пользователю
             if (newChat.user_id === user.id) {
               setChats((prevChats) => [newChat, ...prevChats]);
             }
@@ -82,26 +89,23 @@ export default function GeneratorNavbar({ user }: { user: any }) {
       .subscribe();
   
     return () => {
-      supabase.removeChannel(channel); // Отписываемся при размонтировании компонента
+      supabase.removeChannel(channel); // отписываемся при размонтировании компонента
     };
   }, [supabase, user]);
 
   return (
     <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[70rem] lg:h-[3.5rem] bg-[#EDE2D6]/30 text-white rounded-[10px] z-10 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Логотип */}
         <div className="lg:w-[6.9rem] lg:h-[3rem] ml-5 mt-1 flex items-center justify-center">
           <Link href="/" className={`${marcellus.className} antialiased text-xl sm:text-3xl text-black`}>
                     Orchid
           </Link>
         </div>
-
-        {/* Выпадающее меню с чатами */}
         <div className="flex items-center ml-auto mr-4 mt-1">
           {user && (
             <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="p-0 border-0 bg-transparent shadow-none hover:bg-transparent">
+              <Button variant="ghost" className="p-0 border-0 bg-transparent outline-none shadow-none hover:bg-transparent">
                 <UserProfile user={user} />
               </Button>
             </DropdownMenuTrigger>
@@ -109,8 +113,13 @@ export default function GeneratorNavbar({ user }: { user: any }) {
               {/* Имя пользователя */}
               <DropdownMenuLabel>{user.user_metadata?.name || 'Guest'}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-
-              {/* Подменю с чатами */}
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href='/generator'>
+                    Новый чат
+                  </Link>
+                </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              {/* подменю с чатами */}
               <DropdownMenuGroup>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>Чаты</DropdownMenuSubTrigger>
@@ -122,7 +131,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
                         chats.map((chat) => (
                           <DropdownMenuItem key={chat.id}>
                             <Link href={`/generator/chats/${chat.chat_id}`} className="w-full">
-                              Чат {chat.id}
+                              {capitalizeWords(chat.user_input)}
                             </Link>
                           </DropdownMenuItem>
                         ))
