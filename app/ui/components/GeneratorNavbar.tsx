@@ -35,12 +35,11 @@ export default function GeneratorNavbar({ user }: { user: any }) {
 
   const capitalizeWords = (str: string): string => {
     return str
-      .split(' ') // разделяем строку по пробелам
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Делаем первую букву заглавной
-      .join(' '); // объединяем слова обратно в строку
+      .split(' ') 
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) 
+      .join(' '); 
   };
 
-  // загрузка начального списка чатов
   useEffect(() => {
     const fetchChats = async () => {
       try {
@@ -62,14 +61,14 @@ export default function GeneratorNavbar({ user }: { user: any }) {
     fetchChats();
   }, [user]);
 
-  // подписка на изменения в реальном времени
+
   useEffect(() => {
     const channel = supabase
-      .channel('public:chat') // название канала
+      .channel('public:chat') 
       .on(
         'postgres_changes',
         {
-          event: 'INSERT', // слушаем только INSERT
+          event: 'INSERT', 
           schema: 'public',
           table: 'chat',
         },
@@ -79,7 +78,6 @@ export default function GeneratorNavbar({ user }: { user: any }) {
           if (payload.eventType === 'INSERT') {
             const newChat = payload.new;
   
-            // проверяем принадлежит ли чат текущему пользователю
             if (newChat.user_id === user.id) {
               setChats((prevChats) => [newChat, ...prevChats]);
             }
@@ -89,7 +87,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
       .subscribe();
   
     return () => {
-      supabase.removeChannel(channel); // отписываемся при размонтировании компонента
+      supabase.removeChannel(channel); 
     };
   }, [supabase, user]);
 
@@ -110,7 +108,6 @@ export default function GeneratorNavbar({ user }: { user: any }) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 font-medium">
-              {/* Имя пользователя */}
               <DropdownMenuLabel>{user.user_metadata?.name || 'Guest'}</DropdownMenuLabel>
               <DropdownMenuSeparator />
                 <DropdownMenuItem className="cursor-pointer">
@@ -119,19 +116,21 @@ export default function GeneratorNavbar({ user }: { user: any }) {
                   </Link>
                 </DropdownMenuItem>
               <DropdownMenuSeparator />
-              {/* подменю с чатами */}
               <DropdownMenuGroup>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>Чаты</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
+                  <DropdownMenuSubContent className='overflow-y-auto scrollbar h-64'>
                       {loading ? (
                         <DropdownMenuItem>Загрузка...</DropdownMenuItem>
                       ) : chats.length > 0 ? (
                         chats.map((chat) => (
                           <DropdownMenuItem key={chat.id}>
                             <Link href={`/generator/chats/${chat.chat_id}`} className="w-full">
-                              {capitalizeWords(chat.user_input)}
+                            <span className="text-sm font-medium">{capitalizeWords(chat.user_input)}</span>
+                            <span className="text-sm text-gray-500 ml-2">
+                              {new Date(chat.created_at).toLocaleDateString()}
+                            </span>
                             </Link>
                           </DropdownMenuItem>
                         ))

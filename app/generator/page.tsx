@@ -5,6 +5,8 @@ import Typewriter from "@/app/ui/typewriter";
 import InputField from "./(generator)/InputField";
 
 export default function Generate() {
+
+
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedText, setGeneratedText] = useState<string | null>(null);
 
@@ -34,6 +36,7 @@ export default function Generate() {
 
 
         <div className={`${generatedText ? "mt-20" : "mt-4"} transition-all duration-700`}>
+          
           <InputField onGenerate={handleGenerate} />
         </div>
       </div>
