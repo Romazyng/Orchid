@@ -96,14 +96,14 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/login?showNotification=true');
+  redirect('/login/notification');
 }
 
 
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect('/login');
+  redirect('/login/signin');
 }
 
 export async function oAuthSignIn(provider: Provider) {

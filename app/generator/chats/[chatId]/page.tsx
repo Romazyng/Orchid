@@ -1,4 +1,3 @@
-
 import { createClient } from '@/utils/supabase/server';
 import { notFound } from 'next/navigation';
 import { Marcellus_SC } from 'next/font/google';

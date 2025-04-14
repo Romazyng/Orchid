@@ -31,7 +31,7 @@ export default function Navbar() {
                   </a>
                 </div>
                 <div className="bg-[#ffffff]/90 rounded-[36px] w-[8.5rem] sm:w-[10.5rem] h-[3rem] sm:h-[3rem] mt-1 mr-1 flex items-center justify-center text-black font-semibold cursor-pointer">
-                  <Link href="/login" className="text-center">
+                  <Link href="/login/signin" className="text-center">
                     Sign in
                   </Link>
                 </div>

@@ -24,7 +24,7 @@ export function RegistrationForm({
           <CardDescription>
             <div className="text-center text-sm">
               Already have an account?{" "}
-              <Link href="/login" className="underline underline-offset-4">
+              <Link href="/login/signin" className="underline underline-offset-4">
                 Log in
               </Link>
             </div>
@@ -79,8 +79,7 @@ export function RegistrationForm({
           </form>
         </CardContent>
       </Card>
-
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
+      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary ">
         By clicking register, you agree to our <Link href="https://www.termsfeed.com/live/6f6dd509-1d48-45cc-9dbf-1a8f2540113f">Terms of Service</Link>{" "}
         and <Link href="https://www.termsfeed.com/live/defe1ffe-de9c-4377-bb4f-53465182d40b">Privacy Policy</Link>.
       </div>

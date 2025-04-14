@@ -105,7 +105,9 @@ export default function InputField({ onGenerate }: InputFieldProps) {
       {generatedText && (
         <div className="flex items-center justify-center mb-4 ">
           <div className="p-4 bg-[#EDE2D6] rounded-[10px] text-black w-full sm:w-[80%] lg:w-[1000px] max-h-[500px] px-6 overflow-y-auto scrollbar">
-            <p className="text-center max-w-[900px] mx-auto">{generatedText}</p>
+            <p className="text-center max-w-[900px] mx-auto">
+              {generatedText}
+            </p>
             </div>
         </div>
       )}
@@ -114,7 +116,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
       <input
         id="word"
         type="text"
-        placeholder="Введите ключевое слово"
+        placeholder="Enter your keywords"
         className="bg-[#EDE2D6] focus:outline-none "
         value={inputValue}
         onChange={handleChange}

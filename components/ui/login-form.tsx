@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Marcellus_SC } from 'next/font/google';
 import {
   Card,
   CardHeader,
@@ -12,37 +13,26 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { emailLogin } from "./actions";
-import { OAuthButtons } from "./oauth-signin";
+import { emailLogin } from "../../app/login/actions";
+import { OAuthButtons } from "../../app/login/oauth-signin";
 import Link from "next/link";
 
-export default function Login() {
+const marcellus = Marcellus_SC({
+  subsets: ['latin'], 
+  weight: '400',      
+  variable: '--font-marcellus', 
+});
+
+export default function LoginForm() {
   const searchParams = useSearchParams();
-  const [showNotification, setShowNotification] = useState(false);
-
-  useEffect(() => {
-    if (searchParams.get("showNotification") === "true") {
-      setShowNotification(true);
-
-      setTimeout(() => {
-        setShowNotification(false);
-      }, 5000);
-    }
-  }, [searchParams]);
 
   return (
-    <section className="h-[calc(100vh-57px)] flex justify-center items-center">
-      {showNotification && (
-        <div className="notification">
-          Проверьте вашу почту для подтверждения регистрации!
-        </div>
-      )}
-
-      <Card className="mx-auto max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+    <section className="flex flex-col gap-6 justify-center items-center bg-muted">
+      <Card className="mx-auto w-96">
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl">Login</CardTitle>
           <CardDescription>
-            Enter your email and password below to login to your account
+            Enter your email and password
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -77,11 +67,15 @@ export default function Login() {
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
             <button form="login-form" className="underline">
-              <Link href="/login/signup">Sign up</Link>
+              <Link href="/login/signup" >Sign up</Link>
             </button>
           </div>
         </CardContent>
       </Card>
+      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
+        By clicking login, you agree to our <br/> <Link href="https://www.termsfeed.com/live/6f6dd509-1d48-45cc-9dbf-1a8f2540113f">Terms of Service</Link>{" "}
+        and <Link href="https://www.termsfeed.com/live/defe1ffe-de9c-4377-bb4f-53465182d40b">Privacy Policy</Link>.
+      </div>
     </section>
   );
 }
