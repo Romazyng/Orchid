@@ -92,7 +92,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
   }, [supabase, user]);
 
   return (
-    <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[70rem] lg:h-[3.5rem] bg-[#EDE2D6]/30 text-white rounded-[10px] z-10 backdrop-blur-sm">
+    <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[70rem] lg:h-[3.5rem] bg-[#EDE2D6]/25 text-white rounded-[10px] z-10 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <div className="lg:w-[6.9rem] lg:h-[3rem] ml-5 mt-1 flex items-center justify-center">
           <Link href="/" className={`${marcellus.className} antialiased text-xl sm:text-3xl text-black`}>
@@ -120,7 +120,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>Чаты</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                  <DropdownMenuSubContent className='overflow-y-auto scrollbar h-64'>
+                  <DropdownMenuSubContent className='overflow-y-auto scrollbar h-32'>
                       {loading ? (
                         <DropdownMenuItem>Загрузка...</DropdownMenuItem>
                       ) : chats.length > 0 ? (

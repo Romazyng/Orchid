@@ -1,19 +1,19 @@
 import { createClient } from '@/utils/supabase/server';
 import { notFound } from 'next/navigation';
 import { Marcellus_SC } from 'next/font/google';
-import {Card, Skeleton} from "@heroui/react";
+import InputWrapper from '../../(generator)/InputFieldWrapper';
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-marcellus',
 });
+
 export default async function ChatPage({ params }: { params: Promise<{ chatId: string }> }) {
-  const resolvedParams = await params; 
+  const resolvedParams = await params;
   const supabase = await createClient();
 
   
-
   const { data: chat, error } = await supabase
     .from('chat')
     .select('*')
@@ -26,23 +26,28 @@ export default async function ChatPage({ params }: { params: Promise<{ chatId: s
 
   const capitalizeWords = (str: string): string => {
     return str
-      .split(' ') 
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) 
-      .join(' '); 
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   };
 
   return (
-      <div className="min-h-screen p-4 flex justify-center bg-[#F6ECE1]">
-        <div className="mt-40 p-12 max-w-4xl bg-[#F6ECE1] rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800">
-          {chat.map((msg: any) => (
-            <div key={msg.id} className={`${marcellus.className} antialiased text-lg text-black`}>
-              <h1 className="text-2xl font-medium mb-4">{capitalizeWords(msg.user_input)}</h1>
-              <p>{msg.bot_response}</p> 
-              <span className="text-xs text-gray-600">{new Date(msg.created_at).toLocaleString()}</span>
-            </div>
-          ))}
-        </div>
+    <div className="min-h-screen p-4 flex flex-col justify-between bg-[#F6ECE1]">
+      {/* Основной контейнер чата */}
+      <div className="mt-40 p-12 max-w-4xl mx-auto bg-[#EDE2D6]/25 rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800">
+        {chat.map((msg: any) => (
+          <div key={msg.id} className={`${marcellus.className} antialiased text-lg text-black`}>
+            <h1 className="text-2xl font-medium mb-4">{capitalizeWords(msg.user_input)}</h1>
+            <p>{msg.bot_response}</p>
+            <span className="text-xs text-gray-600">{new Date(msg.created_at).toLocaleString()}</span>
+          </div>
+        ))}
       </div>
 
+      {/* Поле ввода */}
+      <div className="flex justify-center min-h-[7.1rem]">
+        <InputWrapper />
+      </div>
+    </div>
   );
 }

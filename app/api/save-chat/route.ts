@@ -1,3 +1,4 @@
+// pages/api/save-chat/route.ts
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 
@@ -27,19 +28,23 @@ export async function POST(req: Request) {
         console.log("Пользователь:", user.id);
 
         // Создаем новую запись в таблице chats
-        const { error: insertError } = await supabase.from("chat").insert({
-            user_id: user.id,
-            user_input: user_input,
-            bot_response: bot_response,
-        });
+        const { data, error: insertError } = await supabase
+            .from("chat")
+            .insert({
+                user_id: user.id,
+                user_input: user_input,
+                bot_response: bot_response,
+            })
+            .select("chat_id") // Возвращаем chatId (или id)
+            .single();
 
-        if (insertError) {
+        if (insertError || !data) {
             console.error("Ошибка при сохранении чата:", insertError);
             throw insertError;
         }
 
         console.log("Чат сохранён!");
-        return NextResponse.json({ success: true });
+        return NextResponse.json({ chatId: data.chat_id }); // Возвращаем chatId
 
     } catch (error) {
         console.error("Глобальная ошибка:", error);

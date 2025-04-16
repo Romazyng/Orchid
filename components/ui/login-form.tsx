@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Marcellus_SC } from 'next/font/google';
 import {
@@ -64,12 +63,15 @@ export default function LoginForm() {
             </Button>
           </form>
           <OAuthButtons />
+          <CardDescription>
+
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
             <button form="login-form" className="underline">
               <Link href="/login/signup" >Sign up</Link>
             </button>
           </div>
+          </CardDescription>
         </CardContent>
       </Card>
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">

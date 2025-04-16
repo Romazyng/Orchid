@@ -153,3 +153,15 @@
     opacity: 0;
   }
 }
+
+.chat-list-item {
+  background-color: #EDE2D6;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.chat-list-item + .chat-list-item {
+  margin-top: 1rem;
+}
