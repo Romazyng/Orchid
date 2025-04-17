@@ -118,7 +118,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
       </div>
 
       <div className="flex items-center justify-center">
-        <div className="flex gap-2 w-full max-w-[473px] justify-center">
+        <div className="flex w-full max-w-[473px] justify-center">
           {keywords.map((keyword, index) => (
             <div
               key={index}

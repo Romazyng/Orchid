@@ -32,7 +32,7 @@ export default async function ChatPage({ params }: { params: Promise<{ chatId: s
   };
 
   return (
-    <div className="min-h-screen p-4 flex flex-col justify-between bg-[#F6ECE1]">
+    <div className="flex flex-col justify-between bg-[#F6ECE1] min-h-screen w-full ">
       {/* Основной контейнер чата */}
       <div className="mt-40 p-12 max-w-4xl mx-auto bg-[#EDE2D6]/25 rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800">
         {chat.map((msg: any) => (
@@ -44,9 +44,10 @@ export default async function ChatPage({ params }: { params: Promise<{ chatId: s
         ))}
       </div>
 
-      {/* Поле ввода */}
-      <div className="flex justify-center min-h-[7.1rem]">
-        <InputWrapper />
+      <div className="flex justify-center  sm:mt-5  md:mt-5  lg:h-28 xl:h-[7.3rem] xl:mb-5">
+
+          <InputWrapper/>
+
       </div>
     </div>
   );
