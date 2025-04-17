@@ -26,7 +26,7 @@ export default function LoginForm() {
   const searchParams = useSearchParams();
 
   return (
-    <section className="flex flex-col gap-6 justify-center items-center bg-muted">
+    <section className="flex flex-col gap-6 justify-center items-center">
       <Card className="mx-auto w-96">
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Login</CardTitle>
@@ -47,9 +47,15 @@ export default function LoginForm() {
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-              </div>
+            <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                    <a
+                      href="forgot-password"
+                      className="ml-auto text-sm underline-offset-4 hover:underline"
+                    >
+                      Forgot your password?
+                    </a>
+                  </div>
               <Input
                 minLength={6}
                 name="password"
@@ -61,15 +67,22 @@ export default function LoginForm() {
             <Button formAction={emailLogin} className="w-full">
               Login
             </Button>
+            <CardDescription>
+            </CardDescription>
           </form>
+          <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border mb-2">
+                <span className="relative z-10 bg-background px-2 text-muted-foreground">
+                  Or continue with
+                </span>
+          </div>
           <OAuthButtons />
           <CardDescription>
-
           <div className="text-center text-sm">
             Don&apos;t have an account?{" "}
             <button form="login-form" className="underline">
               <Link href="/login/signup" >Sign up</Link>
             </button>
+            
           </div>
           </CardDescription>
         </CardContent>

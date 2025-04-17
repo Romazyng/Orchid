@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Typewriter from "@/app/ui/typewriter";
 import InputField from "./(generator)/InputField";
+import WavyText from "../ui/components/WavyText";
+import Variants from "../ui/components/Menu";
 
 export default function Generate() {
 
@@ -24,7 +26,7 @@ export default function Generate() {
               isGenerating ? "opacity-0" : "opacity-100"
             }`}
           >
-            <p>WHATS ON YOUR MIND TODAY?</p>
+            <WavyText/>
             <Typewriter />
           </div>
         )}

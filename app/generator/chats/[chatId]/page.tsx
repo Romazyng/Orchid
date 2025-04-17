@@ -33,7 +33,6 @@ export default async function ChatPage({ params }: { params: Promise<{ chatId: s
 
   return (
     <div className="flex flex-col justify-between bg-[#F6ECE1] min-h-screen w-full ">
-      {/* Основной контейнер чата */}
       <div className="mt-40 p-12 max-w-4xl mx-auto bg-[#EDE2D6]/25 rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800">
         {chat.map((msg: any) => (
           <div key={msg.id} className={`${marcellus.className} antialiased text-lg text-black`}>

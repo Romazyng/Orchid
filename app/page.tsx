@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 
 import { Marcellus_SC } from 'next/font/google';
 import Navbar from "./ui/Navbar";
+import ScatterText from "./ui/components/ScatterText";
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'],
@@ -25,9 +26,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white">
         <div className="text-center mb-8 lg:mb-16 fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
-          <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[3vw] font-medium">
-            <strong>Build your</strong> <i className="font-light">own</i> <strong>story</strong>
-          </p>
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-[3vw] font-medium">
+            <ScatterText/>
+          </div>
           <h1 className="text-[#747272] text-lg sm:text-xl md:text-2xl lg:text-[1.5vw] mt-4 font-normal">
             based on your preferences.
           </h1>
