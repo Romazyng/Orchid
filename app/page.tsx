@@ -149,7 +149,7 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-2 space-y-4 text-center md:text-left">
-            <h3 className="text-xl md:text-2xl font-medium">Roman Chernetsky</h3>
+            <h3 className="text-xl md:text-2xl font-medium text-black">Roman Chernetsky</h3>
             <p className="text-lg md:text-lg text-[#0099FF] font-normal">CEO, Frontend</p>
             <p className="text-lg md:text-lg text-[#747272] font-normal">
             I believe that success comes from bold ideas, relentless determination, and the courage to challenge the status quo. Every challenge is an opportunity to grow, 
@@ -180,7 +180,7 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-1 space-y-4 text-center md:text-left">
-            <h3 className="text-xl md:text-2xl font-medium">Nikita Gryaznov</h3>
+            <h3 className="text-xl md:text-2xl font-medium text-black">Nikita Gryaznov</h3>
             <p className="text-lg md:text-lg text-[#0099FF] font-normal">Co-Founder, Backend</p>
             <p className="text-lg md:text-lg text-[#747272] font-normal">
             I want to remind you that our work is the backbone of innovation. 
@@ -210,7 +210,7 @@ export default function Home() {
             />
           </div>
           <div className="order-2 md:order-2 space-y-4 text-center md:text-left">
-            <h3 className="text-xl md:text-2xl font-medium">Klim Popov</h3>
+            <h3 className="text-xl md:text-2xl font-medium text-black">Klim Popov</h3>
             <p className="text-lg md:text-lg text-[#0099FF] font-normal">Co-Founder, AI</p>
             <p className="text-lg md:text-lg text-[#747272] font-normal">
             Through the journey, my passion for AI has driven me to push the limits of whats possible. 
