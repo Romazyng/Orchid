@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Typewriter from "@/app/ui/typewriter";
 import InputField from "./(generator)/InputField";
 import WavyText from "../ui/components/WavyText";
@@ -8,9 +8,17 @@ import Variants from "../ui/components/Menu";
 
 export default function Generate() {
 
-
+  const [theme, setTheme] = useState('light')
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedText, setGeneratedText] = useState<string | null>(null);
+
+  useEffect (() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else{
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
 
   const handleGenerate = (text: string) => {
     setIsGenerating(true);
@@ -18,16 +26,16 @@ export default function Generate() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#F6ECE1] relative">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-[#F6ECE1] relative dark:bg-[#16161D]">
+      <button className='dark:text-white' onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}>Тема</button>
       <div className="text-center transition-all duration-700">
         {!generatedText && (
           <div
-            className={`lg:text-[2.5rem] md:text-[2.2rem] sm:text-[1.9rem] font-medium text-[#1E1E26] mb-4 transition-opacity duration-700 ${
+            className={`dark:text-[#DADADA] lg:text-[2.5rem] md:text-[2.2rem] sm:text-[1.9rem] font-medium text-[#1E1E26] mb-4 transition-opacity duration-700 ${
               isGenerating ? "opacity-0" : "opacity-100"
             }`}
           >
             <WavyText/>
-            <Typewriter />
           </div>
         )}
         {generatedText && (

@@ -109,8 +109,8 @@ export default function InputField({ onGenerate }: InputFieldProps) {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-[800px] mx-auto min-h-28">
-      <div className="bg-[#EDE2D6] p-2 text-xl flex w-full max-w-[500px] text-black focus:outline-none rounded-[10px] justify-between">
+    <div className="flex flex-col items-center w-full max-w-[800px] mx-auto min-h-28 ">
+      <div className="bg-[#EDE2D6] p-2 text-xl flex w-full max-w-[500px] dark:bg-[#1E1E26] text-black focus:outline-none rounded-[10px] justify-between">
         <div className="flex mt-[0.2rem] border-r-2 border-[#F6ECE1] h-8">
           <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -154,7 +154,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
         <input
           type="text"
           placeholder="Enter your keywords"
-          className="bg-[#EDE2D6] focus:outline-none w-[87%] ml-2"
+          className="bg-[#EDE2D6] focus:outline-none w-[87%] ml-2 dark:bg-[#1E1E26]"
           value={inputValue}
           onChange={handleChange}
           onKeyDown={handleKeyPress}

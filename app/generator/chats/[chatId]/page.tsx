@@ -32,13 +32,13 @@ export default async function ChatPage({ params }: { params: Promise<{ chatId: s
   };
 
   return (
-    <div className="flex flex-col justify-between bg-[#F6ECE1] min-h-screen w-full ">
-      <div className="mt-40 p-12 max-w-4xl mx-auto bg-[#EDE2D6]/25 rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800">
+    <div className="flex flex-col justify-between bg-[#F6ECE1] min-h-screen w-full dark:bg-[#16161D]">
+      <div className="mt-40 p-12 max-w-4xl mx-auto bg-[#EDE2D6]/25 rounded-lg shadow-inner h-[40rem] overflow-y-auto scrollbar text-gray-800 dark:bg-[#1E1E26]">
         {chat.map((msg: any) => (
-          <div key={msg.id} className={`${marcellus.className} antialiased text-lg text-black`}>
+          <div key={msg.id} className={`${marcellus.className} antialiased text-lg text-black dark:text-[#CCD0CF]`}>
             <h1 className="text-2xl font-medium mb-4">{capitalizeWords(msg.user_input)}</h1>
             <p>{msg.bot_response}</p>
-            <span className="text-xs text-gray-600">{new Date(msg.created_at).toLocaleString()}</span>
+            <span className="text-xs text-gray-600 dark:text-[#CCD0CF]">{new Date(msg.created_at).toLocaleString()}</span>
           </div>
         ))}
       </div>
