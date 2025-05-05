@@ -3,6 +3,20 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Используем useRouter для клиентской навигации
 import { Spinner } from "@heroui/react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 interface InputFieldProps {
   onGenerate: (text: string) => void;
@@ -12,10 +26,12 @@ export default function InputField({ onGenerate }: InputFieldProps) {
   const [keywords, setKeywords] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [categories, setCategories] = useState<string>('world')
   const router = useRouter(); 
 
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" && inputValue.trim()) {
+    if (event.key === " " && inputValue.trim()) {
       if (keywords.length >= 5) {
         alert("Вы можете добавить максимум 5 ключевых слов.");
       } else {
@@ -51,7 +67,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt: keywords.join(" "),
-          category: "world",
+          category: categories,
           max_length: 500,
           temperature: 0.9,
           top_k: 50,
@@ -83,7 +99,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
       const chatId = savedChatData.chatId;
 
       // Редирект на страницу нового чата
-      router.replace(`/generator/chats/${chatId}`); // Используем router.push для клиентской навигации
+      router.replace(`/generator/chats/${chatId}`); // Используем router.replace для клиентской навигации
     } catch (error) {
       console.error("Ошибка:", error);
       alert("Ошибка при генерации текста или сохранении данных");
@@ -94,7 +110,47 @@ export default function InputField({ onGenerate }: InputFieldProps) {
 
   return (
     <div className="flex flex-col items-center w-full max-w-[800px] mx-auto min-h-28">
-      <div className="bg-[#EDE2D6] p-2 text-xl flex w-full max-w-[473px] text-black focus:outline-none rounded-[10px] justify-between">
+      <div className="bg-[#EDE2D6] p-2 text-xl flex w-full max-w-[500px] text-black focus:outline-none rounded-[10px] justify-between">
+        <div className="flex mt-[0.2rem] border-r-2 border-[#F6ECE1] h-8">
+          <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="px-2">
+            <Image
+              alt="theme"
+              width={35}
+              height={35}
+              src='/icons/theme.png'
+            /></button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56 font-medium">
+            <DropdownMenuLabel>Темы</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuSub>
+            <DropdownMenuItem className="">
+              <button onClick={() => setCategories('politics')}>Политика</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('world')}>Мир</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('religion')}>Религия</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('society')}>Общество</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('science')}>Наука</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('culture')}>Культура</button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('economy')}>Экономика</button>
+            </DropdownMenuItem>
+            </DropdownMenuSub>
+          </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
         <input
           type="text"
           placeholder="Enter your keywords"

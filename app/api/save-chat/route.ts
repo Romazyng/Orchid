@@ -35,7 +35,7 @@ export async function POST(req: Request) {
                 user_input: user_input,
                 bot_response: bot_response,
             })
-            .select("chat_id") // Возвращаем chatId (или id)
+            .select("chat_id") // Возвращаем chatId
             .single();
 
         if (insertError || !data) {
