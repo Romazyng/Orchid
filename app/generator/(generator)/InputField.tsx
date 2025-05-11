@@ -1,34 +1,36 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // Используем useRouter для клиентской навигации
 import { Spinner } from "@heroui/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import { useTheme } from 'next-themes';
 
 interface InputFieldProps {
   onGenerate: (text: string) => void;
 }
 
 export default function InputField({ onGenerate }: InputFieldProps) {
+  const { theme } = useTheme();
   const [keywords, setKeywords] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<string>('world')
+  const [isDark, setIsDark] = useState(false);
   const router = useRouter(); 
 
+  useEffect(() => {
+    setIsDark(theme === 'dark');
+  }, [theme]);
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === " " && inputValue.trim()) {
@@ -115,19 +117,20 @@ export default function InputField({ onGenerate }: InputFieldProps) {
           <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="px-2">
-            <Image
-              alt="theme"
-              width={35}
-              height={35}
-              src='/icons/theme.png'
-            /></button>
+                <Image
+                  alt="theme"
+                  width={35}
+                  height={35}
+                  src={isDark ? '/icons/white.png' : '/icons/theme.png'}
+                />
+            </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 font-medium">
             <DropdownMenuLabel>Темы</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuSub>
-            <DropdownMenuItem className="">
-              <button onClick={() => setCategories('politics')}>Политика</button>
+            <DropdownMenuItem>
+              <button onClick={() => setCategories('politics')}>&#8226;Политика</button>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <button onClick={() => setCategories('world')}>Мир</button>
@@ -166,7 +169,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
             <img
               width="40"
               height="40"
-              src="https://img.icons8.com/ios-glyphs/40/send-letter.png"
+              src={isDark ? '/icons/white-arrow.png' : "https://img.icons8.com/ios-glyphs/40/send-letter.png"}
               alt="send-letter"
             />
           )}

@@ -1,5 +1,6 @@
 import { getUser } from '@/utils/supabase/getUser';
 import GeneratorNavbar from '../ui/components/GeneratorNavbar';
+import { ThemeProvider } from "next-themes";
 
 export default async function RootLayout({
   children,
@@ -10,8 +11,15 @@ export default async function RootLayout({
 
   return (
     <>
+    <ThemeProvider attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+            enableSystem={false} // отключаем автоматическое определение системной темы
+            storageKey="my-app-theme" // ключ для localStorage
+    >
       <GeneratorNavbar user={user} />
       {children}
+    </ThemeProvider>
     </>
   );
 }

@@ -5,20 +5,29 @@ import Typewriter from "@/app/ui/typewriter";
 import InputField from "./(generator)/InputField";
 import WavyText from "../ui/components/WavyText";
 import Variants from "../ui/components/Menu";
+import { useTheme } from 'next-themes';
 
 export default function Generate() {
 
-  const [theme, setTheme] = useState('light')
+  const { theme, setTheme } = useTheme();
+  // const [theme, setTheme] = useState('light')
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedText, setGeneratedText] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect (() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else{
-      document.documentElement.classList.remove('dark')
-    }
-  }, [theme])
+  // useEffect (() => {
+  //   if (theme === 'dark') {
+  //     document.documentElement.classList.add('dark')
+  //   } else{
+  //     document.documentElement.classList.remove('dark')
+  //   }
+  // }, [theme])
+  // Чтобы избежать ошибок рендера на сервере
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // Не рендерим UI до монтирования на клиенте
 
   const handleGenerate = (text: string) => {
     setIsGenerating(true);
@@ -27,7 +36,7 @@ export default function Generate() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-[#F6ECE1] relative dark:bg-[#16161D]">
-      <button className='dark:text-white' onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}>Тема</button>
+      <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button>
       <div className="text-center transition-all duration-700">
         {!generatedText && (
           <div
