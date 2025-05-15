@@ -1,5 +1,7 @@
 import { getUser } from '@/utils/supabase/getUser';
-import GeneratorNavbar from '../ui/components/GeneratorNavbar';
+import GeneratorNavbar from './GeneratorNavbar';
+import { ThemeProvider } from 'next-themes';
+import { ThemeWrapper } from '@/app/generator/ThemeSwitcher';
 
 export default async function RootLayout({
   children,
@@ -18,8 +20,17 @@ export default async function RootLayout({
             storageKey="my-app-theme" // ключ для localStorage
             defaultTheme={enableDark ? 'dark' : 'light'}
     > */}
-      <GeneratorNavbar user={user} />
-      {children}
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
+      storageKey="generator-theme"
+    >
+      <ThemeWrapper>
+        <GeneratorNavbar user={user} />
+        {children}
+      </ThemeWrapper>
+    </ThemeProvider>
     {/* </ThemeProvider> */}
     </>
   );

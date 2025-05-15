@@ -11,6 +11,9 @@ import { motion } from "framer-motion";
 import { Marcellus_SC } from 'next/font/google';
 import Navbar from "./ui/Navbar";
 import ScatterText from "./ui/components/ScatterText";
+import { useEffect, useState } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'],
@@ -19,11 +22,44 @@ const marcellus = Marcellus_SC({
 });
 
 export default function Home() {
+  // const [user, setUser] = useState<any>(null);
+  // const supabase = createClientComponentClient();
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const res = await fetch('/api/user');
+  //     const data = await res.json();
+  //     console.log('API response:', data);
+  //     setUser(data.user);
+  //   };
+
+  //   fetchUser();
+  // }, []);
+  
   ShowContent();
   return (
     <main className="flex flex-col min-h-screen w-full overflow-x-hidden overflow-y-auto scrollbar">
-      <Navbar />
+      <Navbar/>
+      {/* {user ? `Добро пожаловать, ${user.email}` : 'Вы не вошли'} */}
       {/* Hero Section */}
+      {/* <button
+        onClick={async () => {
+          const { data: { user }, error } = await supabase.auth.getUser();
+          console.log('Debug user:', user);
+          console.error('Error:', error);
+        }}
+      >
+        Debug User
+      </button>
+      <button
+        onClick={async () => {
+          const supabase = createClientComponentClient();
+          await supabase.auth.signOut();
+          window.location.reload();
+        }}
+      >
+        Sign out
+      </button> */}
       <section className="relative flex flex-col items-center justify-center min-h-screen bg-black text-white">
         <div className="text-center mb-8 lg:mb-16 fade-in opacity-0 transform translate-y-10 transition-all duration-1000">
           <div className="text-4xl sm:text-5xl md:text-6xl lg:text-[3vw] font-medium">

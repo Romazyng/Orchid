@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import "@theme-toggles/react/css/Expand.css"
+import { Expand } from "@theme-toggles/react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +18,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import UserProfile from '../../generator/UserProfile';
+import UserProfile from './UserProfile';
 import { Button } from '@/components/ui/button';
 import { signOut } from '@/app/login/actions';
 
@@ -102,7 +104,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
           </Link>
         </div>
         <div className='flex-1 flex items-center justify-center '>
-          <button className='text-black dark:text-white' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button>
+          <button className='text-black dark:text-white' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Тема</button>
         </div>
         <div className="flex items-center ml-auto mr-4 mt-1 ">
           {user && (
