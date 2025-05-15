@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 import { signOut } from '@/app/login/actions';
 
 import { Marcellus_SC } from 'next/font/google';
+import { useTheme } from 'next-themes';
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'], 
@@ -32,6 +33,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
   const [chats, setChats] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const supabase = createClientComponentClient();
+  const { theme, setTheme } = useTheme();
 
   const capitalizeWords = (str: string): string => {
     return str
@@ -94,12 +96,15 @@ export default function GeneratorNavbar({ user }: { user: any }) {
   return (
     <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[70rem] lg:h-[3.5rem] bg-[#EDE2D6] text-white rounded-[10px] z-10 backdrop-blur-sm dark:bg-[#1E1E26]">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="lg:w-[6.9rem] lg:h-[3rem] ml-5 mt-1 flex items-center justify-center">
+        <div className="lg:w-[6.9rem] lg:h-[3rem] ml-5 mt-1 flex items-center justify-center ">
           <Link href="/" className={`${marcellus.className} antialiased text-xl sm:text-3xl text-black dark:text-[#CCD0CF]`}>
                     Orchid
           </Link>
         </div>
-        <div className="flex items-center ml-auto mr-4 mt-1">
+        <div className='flex-1 flex items-center justify-center '>
+          <button className='text-black dark:text-white' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button>
+        </div>
+        <div className="flex items-center ml-auto mr-4 mt-1 ">
           {user && (
             <DropdownMenu>
             <DropdownMenuTrigger asChild>

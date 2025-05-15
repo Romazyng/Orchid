@@ -36,7 +36,7 @@ export default function Generate() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-[#F6ECE1] relative dark:bg-[#16161D]">
-      <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button>
+      {/* <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button> */}
       <div className="text-center transition-all duration-700">
         {!generatedText && (
           <div

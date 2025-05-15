@@ -20,13 +20,44 @@ interface InputFieldProps {
 }
 
 export default function InputField({ onGenerate }: InputFieldProps) {
-  const { theme } = useTheme();
+  const { theme} = useTheme();
   const [keywords, setKeywords] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<string>('world')
   const [isDark, setIsDark] = useState(false);
   const router = useRouter(); 
+
+  const topics = [
+  { id: 'politics', label: 'Политика', color: '#FF4C4C' },
+  { id: 'world', label: 'Мир', color: '#4CAF50' },
+  { id: 'religion', label: 'Религия', color: '#9C27B0' },
+  { id: 'society', label: 'Общество', color: '#FF9800' },
+  { id: 'science', label: 'Наука', color: '#2196F3' },
+  { id: 'culture', label: 'Культура', color: '#401E12' },
+  { id: 'economy', label: 'Экономика', color: '#D9048E' },
+  ];
+
+  const getCategory = (category: string, isDark: boolean) => {
+    switch (category) {
+      case 'politics':
+        return '/icons/politics.png'
+      case 'world':
+        return '/icons/world.png'
+      case 'religion':
+        return '/icons/religion.png'
+      case 'society':
+        return '/icons/society.png'
+      case 'science':
+        return '/icons/science.png'
+      case 'culture':
+        return '/icons/culture.png'
+      case 'economy':
+        return '/icons/economy.png'
+      default:
+        return '/icons/theme.png'
+    }
+  }
 
   useEffect(() => {
     setIsDark(theme === 'dark');
@@ -114,50 +145,41 @@ export default function InputField({ onGenerate }: InputFieldProps) {
     <div className="flex flex-col items-center w-full max-w-[800px] mx-auto min-h-28 ">
       <div className="bg-[#EDE2D6] p-2 text-xl flex w-full max-w-[500px] dark:bg-[#1E1E26] text-black focus:outline-none rounded-[10px] justify-between">
         <div className="flex mt-[0.2rem] border-r-2 border-[#F6ECE1] h-8">
+          {/* <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Тема</button> */}
           <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="px-2">
                 <Image
                   alt="theme"
-                  width={35}
-                  height={35}
-                  src={isDark ? '/icons/white.png' : '/icons/theme.png'}
+                  width={30}
+                  height={30}
+                  src={getCategory(categories, isDark)}
                 />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56 font-medium">
-            <DropdownMenuLabel>Темы</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuSub>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('politics')}>&#8226;Политика</button>
+          <DropdownMenuLabel>Темы</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {topics.map((topic) => (
+            <DropdownMenuItem
+              key={topic.id}
+              className="hover:cursor-pointer flex items-center space-x-2"
+              onClick={() => setCategories(topic.id)}
+            >
+              <span
+                className="inline-block w-2 h-2 rounded-full"
+                style={{ backgroundColor: topic.color }}
+              />
+              <span>{topic.label}</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('world')}>Мир</button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('religion')}>Религия</button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('society')}>Общество</button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('science')}>Наука</button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('culture')}>Культура</button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <button onClick={() => setCategories('economy')}>Экономика</button>
-            </DropdownMenuItem>
-            </DropdownMenuSub>
-          </DropdownMenuContent>
+          ))}
+        </DropdownMenuContent>
           </DropdownMenu>
         </div>
         <input
           type="text"
           placeholder="Enter your keywords"
-          className="bg-[#EDE2D6] focus:outline-none w-[87%] ml-2 dark:bg-[#1E1E26]"
+          className="bg-[#EDE2D6] focus:outline-none w-[87%] ml-2 dark:bg-[#1E1E26] text-black dark:text-white"
           value={inputValue}
           onChange={handleChange}
           onKeyDown={handleKeyPress}
@@ -181,7 +203,7 @@ export default function InputField({ onGenerate }: InputFieldProps) {
           {keywords.map((keyword, index) => (
             <div
               key={index}
-              className="flex items-center bg-slate-500 text-white rounded-[10px] px-3 py-1 text-lg cursor-pointer mt-2"
+              className="flex items-center bg-[#EDE2D6] dark:bg-[#1E1E26] text-black dark:text-white rounded-[10px] px-3 py-1 text-lg cursor-pointer mt-2"
               onClick={() => handleRemove(index)}
             >
               <span className="mr-2">{keyword}</span>
