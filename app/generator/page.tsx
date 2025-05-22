@@ -22,7 +22,7 @@ export default function Generate() {
   //     document.documentElement.classList.remove('dark')
   //   }
   // }, [theme])
-  // Чтобы избежать ошибок рендера на сервере
+
   useEffect(() => {
     setMounted(true);
   }, []);

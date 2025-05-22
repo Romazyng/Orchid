@@ -21,9 +21,10 @@ import {
 import UserProfile from './UserProfile';
 import { Button } from '@/components/ui/button';
 import { signOut } from '@/app/login/actions';
-
+import Notification from '@/components/ui/Notification';
 import { Marcellus_SC } from 'next/font/google';
 import { useTheme } from 'next-themes';
+import ThemeToggle from '../ui/components/ThemeToggle';
 
 const marcellus = Marcellus_SC({
   subsets: ['latin'], 
@@ -36,6 +37,7 @@ export default function GeneratorNavbar({ user }: { user: any }) {
   const [loading, setLoading] = useState<boolean>(true);
   const supabase = createClientComponentClient();
   const { theme, setTheme } = useTheme();
+  const [showNotification, setShowNotification] = useState(true)
 
   const capitalizeWords = (str: string): string => {
     return str
@@ -95,18 +97,30 @@ export default function GeneratorNavbar({ user }: { user: any }) {
     };
   }, [supabase, user]);
 
+  useEffect(() => {
+    if (!loading) {
+      setShowNotification(chats.length === 0)
+    }
+  }, [chats.length, loading])
+
   return (
     <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 lg:w-[70rem] lg:h-[3.5rem] bg-[#EDE2D6] text-white rounded-[10px] z-10 backdrop-blur-sm dark:bg-[#1E1E26]">
+      {!loading && showNotification && (
+        <Notification
+          show={showNotification}
+          onClose={() => setShowNotification(false)}
+        />
+      )}
       <div className="container mx-auto flex justify-between items-center">
         <div className="lg:w-[6.9rem] lg:h-[3rem] ml-5 mt-1 flex items-center justify-center ">
           <Link href="/" className={`${marcellus.className} antialiased text-xl sm:text-3xl text-black dark:text-[#CCD0CF]`}>
                     Orchid
           </Link>
         </div>
-        <div className='flex-1 flex items-center justify-center '>
-          <button className='text-black dark:text-white' onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Тема</button>
+        <div className='flex-1 flex items-center justify-center'>
+          <ThemeToggle />
         </div>
-        <div className="flex items-center ml-auto mr-4 mt-1 ">
+        <div className="flex items-center ml-auto mr-4 mt-1">
           {user && (
             <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -114,7 +128,13 @@ export default function GeneratorNavbar({ user }: { user: any }) {
                 <UserProfile user={user} />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 font-medium">
+            <DropdownMenuContent
+                className="
+                  w-56 font-medium 
+                  bg-[#EDE2D6] dark:bg-[#1E1E26] dark:text-[#CCD0CF]
+                  border-none outline-none ring-0
+                "
+              >
               <DropdownMenuLabel>{user.user_metadata?.name || 'Guest'}</DropdownMenuLabel>
               <DropdownMenuSeparator />
                 <DropdownMenuItem className="cursor-pointer">
@@ -123,11 +143,11 @@ export default function GeneratorNavbar({ user }: { user: any }) {
                   </Link>
                 </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuGroup>
+              <DropdownMenuGroup className=''>
                 <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>Чаты</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger className='dark:text-[#CCD0CF] dark:hover:text-[#1E1E26]'>Чаты</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                  <DropdownMenuSubContent className='overflow-y-auto scrollbar h-32'>
+                  <DropdownMenuSubContent className='overflow-y-auto scrollbar h-32 dark:bg-[#1E1E26] dark:text-[#CCD0CF] bg-[#EDE2D6] border-none outline-none ring-0'>
                       {loading ? (
                         <DropdownMenuItem>Загрузка...</DropdownMenuItem>
                       ) : chats.length > 0 ? (
